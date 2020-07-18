@@ -53,7 +53,7 @@
          <pixmap resource="r130.qrc">:/res/R130/Filled.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="freq_x1000">
+       <widget class="QLabel" name="r130_freq_x1000">
         <property name="geometry">
          <rect>
           <x>370</x>
@@ -69,7 +69,7 @@
          <pixmap resource="r130.qrc">:/res/R130/X1000.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="freq_x100">
+       <widget class="QLabel" name="r130_freq_x100">
         <property name="geometry">
          <rect>
           <x>540</x>
@@ -85,7 +85,7 @@
          <pixmap resource="r130.qrc">:/res/R130/X100.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="freq_x1">
+       <widget class="QLabel" name="r130_freq_x1">
         <property name="geometry">
          <rect>
           <x>662</x>
@@ -101,12 +101,12 @@
          <pixmap resource="r130.qrc">:/res/R130/X1.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="smooth">
+       <widget class="QLabel" name="r130_smooth">
         <property name="geometry">
          <rect>
-          <x>740</x>
-          <y>250</y>
-          <width>55</width>
+          <x>728</x>
+          <y>252</y>
+          <width>101</width>
           <height>81</height>
          </rect>
         </property>
@@ -116,8 +116,11 @@
         <property name="pixmap">
          <pixmap resource="r130.qrc">:/res/R130/ПЛАВНО.png</pixmap>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
-       <widget class="QLabel" name="ton_tlg">
+       <widget class="QLabel" name="r130_ton_tlg">
         <property name="geometry">
          <rect>
           <x>417</x>
@@ -133,7 +136,7 @@
          <pixmap resource="r130.qrc">:/res/R130/ТОН ТЛГ.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="ampermetr_border">
+       <widget class="QLabel" name="r130_ampermetr_border">
         <property name="geometry">
          <rect>
           <x>196</x>
@@ -149,7 +152,7 @@
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="ampermetr_line">
+       <widget class="QLabel" name="r130_ampermetr_line">
         <property name="geometry">
          <rect>
           <x>220</x>
@@ -165,7 +168,7 @@
          <pixmap resource="r130.qrc">:/res/R130/Амперметр.Стрелка.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="volume">
+       <widget class="QLabel" name="r130_volume">
         <property name="geometry">
          <rect>
           <x>320</x>
@@ -181,7 +184,7 @@
          <pixmap resource="r130.qrc">:/res/R130/ГРОМКОСТЬ.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="amplify">
+       <widget class="QLabel" name="r130_amplify">
         <property name="geometry">
          <rect>
           <x>490</x>
@@ -197,7 +200,7 @@
          <pixmap resource="r130.qrc">:/res/R130/УСИЛЕНИЕ.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="cable_bp">
+       <widget class="QLabel" name="r130_cable_bp">
         <property name="geometry">
          <rect>
           <x>697</x>
@@ -206,14 +209,11 @@
           <height>141</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/Кабель.БП.png);</string>
-        </property>
         <property name="text">
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="cable_tlf2">
+       <widget class="QLabel" name="r130_cable_tlf2">
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -222,14 +222,11 @@
           <height>111</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/Кабель.ТЛФ-2.png);</string>
-        </property>
         <property name="text">
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="cable_vsu1">
+       <widget class="QLabel" name="r130_cable_vsu1">
         <property name="geometry">
          <rect>
           <x>50</x>
@@ -238,30 +235,24 @@
           <height>131</height>
          </rect>
         </property>
-        <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/Кабель.Всу.1.png);</string>
-        </property>
         <property name="text">
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="cable_vsu2">
+       <widget class="QLabel" name="r130_cable_vsu2">
         <property name="geometry">
          <rect>
           <x>105</x>
           <y>20</y>
-          <width>71</width>
+          <width>67</width>
           <height>131</height>
          </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/Кабель.Всу.2.png);</string>
         </property>
         <property name="text">
          <string/>
         </property>
        </widget>
-       <widget class="QLabel" name="avnastr_control">
+       <widget class="QLabel" name="r130_avnastr_control">
         <property name="geometry">
          <rect>
           <x>139</x>
@@ -276,8 +267,11 @@
         <property name="pixmap">
          <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.КОНТРОЛЬ.png</pixmap>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
        </widget>
-       <widget class="QLabel" name="avnastr_level">
+       <widget class="QLabel" name="r130_avnastr_level">
         <property name="geometry">
          <rect>
           <x>239</x>
@@ -293,7 +287,7 @@
          <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.УРОВЕНЬ ПЕРЕДАЧИ.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="avnastr_rod">
+       <widget class="QLabel" name="r130_avnastr_rod">
         <property name="geometry">
          <rect>
           <x>240</x>
@@ -309,7 +303,7 @@
          <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.РОД РАБОТЫ.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="avnast_regime">
+       <widget class="QLabel" name="r130_avnast_regime">
         <property name="geometry">
          <rect>
           <x>140</x>
@@ -325,7 +319,7 @@
          <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.РЕЖИМ.png</pixmap>
         </property>
        </widget>
-       <widget class="QLabel" name="btn_nastroika">
+       <widget class="QLabel" name="r130_btn_nastroika">
         <property name="geometry">
          <rect>
           <x>357</x>
@@ -345,24 +339,24 @@
         </property>
        </widget>
        <zorder>main</zorder>
-       <zorder>freq_x1000</zorder>
-       <zorder>freq_x100</zorder>
-       <zorder>freq_x1</zorder>
-       <zorder>smooth</zorder>
-       <zorder>ton_tlg</zorder>
-       <zorder>ampermetr_line</zorder>
-       <zorder>ampermetr_border</zorder>
-       <zorder>volume</zorder>
-       <zorder>amplify</zorder>
-       <zorder>cable_bp</zorder>
-       <zorder>cable_tlf2</zorder>
-       <zorder>cable_vsu1</zorder>
-       <zorder>cable_vsu2</zorder>
-       <zorder>avnastr_control</zorder>
-       <zorder>avnastr_level</zorder>
-       <zorder>avnastr_rod</zorder>
-       <zorder>avnast_regime</zorder>
-       <zorder>btn_nastroika</zorder>
+       <zorder>r130_freq_x1000</zorder>
+       <zorder>r130_freq_x100</zorder>
+       <zorder>r130_freq_x1</zorder>
+       <zorder>r130_smooth</zorder>
+       <zorder>r130_ton_tlg</zorder>
+       <zorder>r130_ampermetr_line</zorder>
+       <zorder>r130_ampermetr_border</zorder>
+       <zorder>r130_volume</zorder>
+       <zorder>r130_amplify</zorder>
+       <zorder>r130_cable_bp</zorder>
+       <zorder>r130_cable_tlf2</zorder>
+       <zorder>r130_cable_vsu1</zorder>
+       <zorder>r130_cable_vsu2</zorder>
+       <zorder>r130_avnastr_control</zorder>
+       <zorder>r130_avnastr_level</zorder>
+       <zorder>r130_avnastr_rod</zorder>
+       <zorder>r130_avnast_regime</zorder>
+       <zorder>r130_btn_nastroika</zorder>
       </widget>
       <widget class="QWidget" name="vsua">
        <attribute name="title">

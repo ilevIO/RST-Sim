@@ -43,6 +43,7 @@ SOURCES += \
     view/r123_vsua.cpp \
     view/r130.cpp \
     view/r130_bp.cpp \
+    view/r130_rs.cpp \
     view/r130_vsua.cpp \
     view/r173.cpp \
     instruments/socket.cpp \
