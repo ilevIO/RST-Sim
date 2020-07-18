@@ -25,7 +25,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="r130_tab">
        <property name="sizePolicy">
@@ -37,7 +37,7 @@
        <attribute name="title">
         <string>Р130</string>
        </attribute>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="main">
         <property name="geometry">
          <rect>
           <x>30</x>
@@ -53,6 +53,316 @@
          <pixmap resource="r130.qrc">:/res/R130/Filled.png</pixmap>
         </property>
        </widget>
+       <widget class="QLabel" name="freq_x1000">
+        <property name="geometry">
+         <rect>
+          <x>370</x>
+          <y>180</y>
+          <width>111</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/X1000.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="freq_x100">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>185</y>
+          <width>101</width>
+          <height>101</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/X100.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="freq_x1">
+        <property name="geometry">
+         <rect>
+          <x>662</x>
+          <y>180</y>
+          <width>101</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/X1.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="smooth">
+        <property name="geometry">
+         <rect>
+          <x>740</x>
+          <y>250</y>
+          <width>55</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/ПЛАВНО.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="ton_tlg">
+        <property name="geometry">
+         <rect>
+          <x>417</x>
+          <y>89</y>
+          <width>71</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/ТОН ТЛГ.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="ampermetr_border">
+        <property name="geometry">
+         <rect>
+          <x>196</x>
+          <y>156</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/res/R130/Амперметр.Рамка.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="ampermetr_line">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>99</y>
+          <width>141</width>
+          <height>151</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/Амперметр.Стрелка.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="volume">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>262</y>
+          <width>41</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/ГРОМКОСТЬ.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="amplify">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>263</y>
+          <width>41</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/УСИЛЕНИЕ.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="cable_bp">
+        <property name="geometry">
+         <rect>
+          <x>697</x>
+          <y>401</y>
+          <width>121</width>
+          <height>141</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/res/R130/Кабель.БП.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="cable_tlf2">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>447</y>
+          <width>131</width>
+          <height>111</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/res/R130/Кабель.ТЛФ-2.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="cable_vsu1">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>20</y>
+          <width>61</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/res/R130/Кабель.Всу.1.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="cable_vsu2">
+        <property name="geometry">
+         <rect>
+          <x>105</x>
+          <y>20</y>
+          <width>71</width>
+          <height>131</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/res/R130/Кабель.Всу.2.png);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="avnastr_control">
+        <property name="geometry">
+         <rect>
+          <x>139</x>
+          <y>248</y>
+          <width>55</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.КОНТРОЛЬ.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="avnastr_level">
+        <property name="geometry">
+         <rect>
+          <x>239</x>
+          <y>261</y>
+          <width>41</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.УРОВЕНЬ ПЕРЕДАЧИ.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="avnastr_rod">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>340</y>
+          <width>41</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.РОД РАБОТЫ.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="avnast_regime">
+        <property name="geometry">
+         <rect>
+          <x>140</x>
+          <y>344</y>
+          <width>55</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/АВНАСТР.РЕЖИМ.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="btn_nastroika">
+        <property name="geometry">
+         <rect>
+          <x>357</x>
+          <y>76</y>
+          <width>31</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-image: url(:/res/R130/НАСТРОЙКА.png);</string>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <zorder>main</zorder>
+       <zorder>freq_x1000</zorder>
+       <zorder>freq_x100</zorder>
+       <zorder>freq_x1</zorder>
+       <zorder>smooth</zorder>
+       <zorder>ton_tlg</zorder>
+       <zorder>ampermetr_line</zorder>
+       <zorder>ampermetr_border</zorder>
+       <zorder>volume</zorder>
+       <zorder>amplify</zorder>
+       <zorder>cable_bp</zorder>
+       <zorder>cable_tlf2</zorder>
+       <zorder>cable_vsu1</zorder>
+       <zorder>cable_vsu2</zorder>
+       <zorder>avnastr_control</zorder>
+       <zorder>avnastr_level</zorder>
+       <zorder>avnastr_rod</zorder>
+       <zorder>avnast_regime</zorder>
+       <zorder>btn_nastroika</zorder>
       </widget>
       <widget class="QWidget" name="vsua">
        <attribute name="title">

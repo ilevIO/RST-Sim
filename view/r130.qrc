@@ -20,5 +20,7 @@
         <file>res/R130/Кабель.Всу.1.png</file>
         <file>res/R130/Кабель.Всу.2.png</file>
         <file>res/R130/Кабель.ТЛФ-2.png</file>
+        <file>res/R130/ПЛАВНО.png</file>
+        <file>res/R130/НАСТРОЙКА.png</file>
     </qresource>
 </RCC>
