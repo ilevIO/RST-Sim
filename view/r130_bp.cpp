@@ -2,7 +2,7 @@
 #include "ui_r130.h"
 #include <QDebug>
 #include <QMouseEvent>
-//71 -13
+
 void R130::mousePressEventBp(QMouseEvent * event){
 //    this->keyReleaseEvent(nullptr);
     static bool pit_zem = false, pit_pit = false, pit_vsua = false;
