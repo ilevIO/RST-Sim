@@ -2,7 +2,7 @@
 #include "ui_r123.h"
 #include "QDebug"
 /*
-void R123::wheelEventVsua(QWheelEvent * event) {
+void R130::wheelEventVsua(QWheelEvent * event) {
     this->keyReleaseEvent(nullptr);
     static int angle_us_ch = 0, angle_vrt = 0;
     static QPixmap * vsua_nast_ch = new QPixmap(":/res/r123/vsua_naptr_kr.png");

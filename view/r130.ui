@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1042</width>
-    <height>600</height>
+    <width>1418</width>
+    <height>1059</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="r130_tab">
        <property name="sizePolicy">
@@ -37,6 +37,22 @@
        <attribute name="title">
         <string>Р130</string>
        </attribute>
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>1381</width>
+          <height>1011</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="r130.qrc">:/res/R130/Filled.png</pixmap>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="vsua">
        <attribute name="title">
@@ -453,6 +469,7 @@
  <resources>
   <include location="r173.qrc"/>
   <include location="r123.qrc"/>
+  <include location="r130.qrc"/>
  </resources>
  <connections/>
 </ui>
