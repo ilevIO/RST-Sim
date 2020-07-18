@@ -7,7 +7,7 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
 {
     setFocusPolicy(Qt::FocusPolicy::StrongFocus);
 
-    this->setFixedSize(1418, 1059);
+    this->setFixedSize(916, 691);
 
     ui->setupUi(this);
 }

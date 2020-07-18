@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1418</width>
-    <height>1059</height>
+    <width>916</width>
+    <height>691</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="r130_tab">
        <property name="sizePolicy">
@@ -40,10 +40,10 @@
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>10</x>
+          <x>30</x>
           <y>10</y>
-          <width>1381</width>
-          <height>1011</height>
+          <width>831</width>
+          <height>611</height>
          </rect>
         </property>
         <property name="text">
@@ -387,8 +387,8 @@
        <widget class="QLabel" name="bp26label">
         <property name="geometry">
          <rect>
-          <x>166</x>
-          <y>45</y>
+          <x>95</x>
+          <y>58</y>
           <width>696</width>
           <height>506</height>
          </rect>
@@ -418,8 +418,8 @@
        <widget class="QLabel" name="pit_vsua">
         <property name="geometry">
          <rect>
-          <x>431</x>
-          <y>257</y>
+          <x>360</x>
+          <y>270</y>
           <width>451</width>
           <height>181</height>
          </rect>
@@ -434,8 +434,8 @@
        <widget class="QLabel" name="pit_zem">
         <property name="geometry">
          <rect>
-          <x>167</x>
-          <y>460</y>
+          <x>96</x>
+          <y>473</y>
           <width>91</width>
           <height>91</height>
          </rect>
@@ -450,8 +450,8 @@
        <widget class="QLabel" name="pit_pit">
         <property name="geometry">
          <rect>
-          <x>250</x>
-          <y>430</y>
+          <x>179</x>
+          <y>443</y>
           <width>391</width>
           <height>121</height>
          </rect>
