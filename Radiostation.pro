@@ -42,6 +42,7 @@ SOURCES += \
     view/r123_rs.cpp \
     view/r123_vsua.cpp \
     view/r130.cpp \
+    view/r130_bp.cpp \
     view/r130_vsua.cpp \
     view/r173.cpp \
     instruments/socket.cpp \
@@ -95,6 +96,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    view/r130.qrc \
     view/r173.qrc \
     view/r159.qrc \
     view/r123.qrc
@@ -103,3 +105,5 @@ RESOURCES += \
 DISTFILES += \
     view/res/p173-nlo.jpg \
     view/res/p173-nlo.jpg
+
+CONFIG += resources_big

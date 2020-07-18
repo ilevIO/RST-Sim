@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/R130/Filled.png</file>
+        <file>res/R130/X1.png</file>
+        <file>res/R130/X100.png</file>
+        <file>res/R130/X1000.png</file>
+        <file>res/R130/АВНАСТР.КОНТРОЛЬ.png</file>
+        <file>res/R130/АВНАСТР.РЕЖИМ.png</file>
+        <file>res/R130/АВНАСТР.РОД РАБОТЫ.png</file>
+        <file>res/R130/АВНАСТР.УРОВЕНЬ ПЕРЕДАЧИ.png</file>
+        <file>res/R130/АВНАСТР.ЧИРВОНАКНОПКА.png</file>
+        <file>res/R130/Амперметр.Рамка.png</file>
+        <file>res/R130/Амперметр.Стрелка.png</file>
+        <file>res/R130/ГАВНО.png</file>
+        <file>res/R130/ГРОМКОСТЬ.png</file>
+        <file>res/R130/ДЕЖ.ПРИЕМ.png</file>
+        <file>res/R130/КОНТРОЛЬР.png</file>
+        <file>res/R130/Р-130.psd</file>
+        <file>res/R130/ТОН ТЛГ.png</file>
+        <file>res/R130/УСИЛЕНИЕ.png</file>
+        <file>res/R130/Кабель.БП.png</file>
+        <file>res/R130/Кабель.Всу.1.png</file>
+        <file>res/R130/Кабель.Всу.2.png</file>
+        <file>res/R130/Кабель.ТЛФ-2.png</file>
+    </qresource>
+</RCC>
