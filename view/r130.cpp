@@ -34,6 +34,9 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_volume = 0;
     r130_amplify = 0;
     r130_ton_tlg = 0;
+    r130_x1_angle = 0;
+    r130_x100_angle = 0;
+    r130_x1000_angle = 0;
 }
 
 R130::~R130()

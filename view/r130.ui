@@ -25,7 +25,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="r130_tab">
        <property name="sizePolicy">
@@ -858,9 +858,9 @@
   </widget>
  </widget>
  <resources>
+  <include location="r130.qrc"/>
   <include location="r173.qrc"/>
   <include location="r123.qrc"/>
-  <include location="r130.qrc"/>
  </resources>
  <connections/>
 </ui>

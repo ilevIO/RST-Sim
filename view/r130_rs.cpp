@@ -148,13 +148,13 @@ void R130::wheelEventRs(QWheelEvent *event) {
     qDebug() << "x: " << event->x() << " y: " << event->y();
     if (!r130_ziem)
         return;
-    int x1000centerX = 430, x1000centerY = 270, x1000radiusW = 111/2, x1000radiusH = 111/2;
-    int x100centerX = 605, x100centerY = 270, x100radiusW = 101/2, x100radiusH = 101/2;
-    int x1centerX = 740, x1centerY = 270, x1radiusW = 101/2, x1radiusH = 101/2;
+//    int x1000centerX = 430, x1000centerY = 270, x1000radiusW = 111/2, x1000radiusH = 111/2;
+//    int x100centerX = 605, x100centerY = 270, x100radiusW = 101/2, x100radiusH = 101/2;
+//    int x1centerX = 740, x1centerY = 270, x1radiusW = 101/2, x1radiusH = 101/2;
 
-    int x1000minX = x1000centerX - x1000radiusW, x1000maxX = x1000centerX + x1000radiusW, x1000minY = x1000centerY - x1000radiusH, x1000maxY = x1000centerY + x1000radiusH;
-    int x100minX = x100centerX - x100radiusW, x100maxX = x100centerX + x100radiusW, x100minY = x100centerY - x100radiusH, x100maxY = x100centerY + x100radiusH;
-    int x1minX = x1centerX - x1radiusW, x1maxX = x1centerX + x1radiusW, x1minY = x1centerY - x1radiusH, x1maxY = x1centerY + x1radiusH;
+//    int x1000minX = x1000centerX - x1000radiusW, x1000maxX = x1000centerX + x1000radiusW, x1000minY = x1000centerY - x1000radiusH, x1000maxY = x1000centerY + x1000radiusH;
+//    int x100minX = x100centerX - x100radiusW, x100maxX = x100centerX + x100radiusW, x100minY = x100centerY - x100radiusH, x100maxY = x100centerY + x100radiusH;
+//    int x1minX = x1centerX - x1radiusW, x1maxX = x1centerX + x1radiusW, x1minY = x1centerY - x1radiusH, x1maxY = x1centerY + x1radiusH;
 
     if (event->x() > 250 && event->y() > 293 &&
             event->x() < 289 && event->y() < 333)
@@ -221,65 +221,66 @@ void R130::wheelEventRs(QWheelEvent *event) {
 
         // todo check how it's actually rotating
         // R130 TON TLG EVENT
-    }
-    else if (event->x() > x1000minX && event->y() > x1000minY
-             && event->x() < x1000maxX && event->y() < x1000maxY) {
-        qDebug() << "Rotating X1000";
-        static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/X1000.png");
+    } else if (event->x() > 374 && event->y() > 227 &&
+               event->x() < 476 && event->y() < 324)
+//    else if (event->x() > x1000minX && event->y() > x1000minY
+//             && event->x() < x1000maxX && event->y() < x1000maxY)
+    {
+        static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/X100.png");
 
-        if (event->angleDelta().ry() > 0) {
-            r130_frequency += 4;
-        }
-        if (event->angleDelta().ry() < 0) {
-            r130_frequency -= 4;
-        }
+        if (event->angleDelta().ry() > 0)
+            r130_x1000_angle += 4;
+        if (event->angleDelta().ry() < 0)
+            r130_x1000_angle -= 4;
 
-        r130_frequency = r130_frequency > 360 ? r130_frequency - 360 : r130_frequency;
-        r130_frequency = r130_frequency < 0 ? r130_frequency + 360  : r130_frequency;
+        r130_x1000_angle = r130_x1000_angle > 360 ? r130_x1000_angle - 360 : r130_x1000_angle;
+        r130_x1000_angle = r130_x1000_angle < 0 ? r130_x1000_angle + 360  : r130_x1000_angle;
 
         this->apply_rotated_pixmap_to_widget(
             this->ui->r130_freq_x1000, r130_x1000_pixmap,
-            r130_frequency
+            r130_x1000_angle
         );
-    }
-    else if (event->x() > x100minX && event->y() > x100minY
-             && event->x() < x100maxX && event->y() < x100maxY) {
+        // R130 FREQUENCY X1000 ROTATING EVENT
+    } else if (event->x() > 550 && event->y() > 212 &&
+               event->x() < 655 && event->y() < 322)
+//    else if (event->x() > x100minX && event->y() > x100minY
+//             && event->x() < x100maxX && event->y() < x100maxY)
+
+        {
         static QPixmap * r130_x100_pixmap = new QPixmap(":/res/R130/X100.png");
-        qDebug() << "Rotating X100";
 
-        if (event->angleDelta().ry() > 0) {
-            r130_frequency += 4;
-        }
-        if (event->angleDelta().ry() < 0) {
-            r130_frequency -= 4;
-        }
+        if (event->angleDelta().ry() > 0)
+            r130_x100_angle += 4;
+        if (event->angleDelta().ry() < 0)
+            r130_x100_angle -= 4;
 
-        r130_frequency = r130_frequency > 360 ? r130_frequency - 360 : r130_frequency;
-        r130_frequency = r130_frequency < 0 ? r130_frequency + 360  : r130_frequency;
+        r130_x100_angle = r130_x100_angle > 360 ? r130_x100_angle - 360 : r130_x100_angle;
+        r130_x100_angle = r130_x100_angle < 0 ? r130_x100_angle + 360  : r130_x100_angle;
 
         this->apply_rotated_pixmap_to_widget(
             this->ui->r130_freq_x100, r130_x100_pixmap,
-            r130_frequency
+            r130_x100_angle
         );
-    }
-    else if (event->x() > x1minX && event->y() > x1minY
-             && event->x() < x1maxX && event->y() < x1maxY) {
+        // R130 FREQUENCY X100 ROTATING EVENT
+    } else if (event->x() > 678 && event->y() > 211 &&
+               event->x() < 788 && event->y() < 331)
+//    else if (event->x() > x1minX && event->y() > x1minY
+//             && event->x() < x1maxX && event->y() < x1maxY)
+    {
         static QPixmap * r130_x1_pixmap = new QPixmap(":/res/R130/X1.png");
-        qDebug() << "Rotating X1";
 
-        if (event->angleDelta().ry() > 0) {
-            r130_frequency += 4;
-        }
-        if (event->angleDelta().ry() < 0) {
-            r130_frequency -= 4;
-        }
+        if (event->angleDelta().ry() > 0)
+            r130_x1_angle += 4;
+        if (event->angleDelta().ry() < 0)
+            r130_x1_angle -= 4;
 
-        r130_frequency = r130_frequency > 360 ? r130_frequency - 360 : r130_frequency;
-        r130_frequency = r130_frequency < 0 ? r130_frequency + 360  : r130_frequency;
+        r130_x1_angle = r130_x1_angle > 360 ? r130_x1_angle - 360 : r130_x1_angle;
+        r130_x1_angle = r130_x1_angle < 0 ? r130_x1_angle + 360  : r130_x1_angle;
 
         this->apply_rotated_pixmap_to_widget(
             this->ui->r130_freq_x1, r130_x1_pixmap,
-            r130_frequency
+            r130_x1_angle
         );
+        // R130 FREQUENCY X1 ROTATING EVENT
     }
 }
