@@ -298,6 +298,7 @@ void R123::wheelEventRs(QWheelEvent *event) {
     static int angle_szum = 0,
              angle_volume = 0;
     qDebug() << event->x() << " " << event->y();
+
     if (event->x() > 179 && event->y() > 136
             && event->x() < 253 && event->y() < 198)
     {
