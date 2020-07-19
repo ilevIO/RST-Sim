@@ -6,8 +6,22 @@
 
 
 void R130::mousePressEventRs(QMouseEvent *event) {
+    if (event->x() > 714 && event->y() > 441 &&
+            event->x() < 821 && event->y() < 568)
+       {
+           r130_cable_pit = !r130_cable_pit;
+           r130_ziem = !r130_ziem;
+           this->ui->r130_cable_bp->setStyleSheet(
+               r130_cable_pit ? "background-image: url(:/res/R130/Кабель.БП.png);" : ""
+           );
+           // PITANIYE AND ZIEMLYA EVENT
+    }
+
+    if (!r130_ziem)
+        return;
+
     if (event->x() > 62 && event->y() > 56 &&
-            event->x() < 118 && event->y() < 181)
+               event->x() < 118 && event->y() < 181)
     {
         r130_vsu_cable_1_launched = !r130_vsu_cable_1_launched;
         this->ui->r130_cable_vsu1->setStyleSheet(
@@ -22,14 +36,6 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             r130_vsu_cable_2_launched ? "background-image: url(:/res/R130/Кабель.Всу.2.png);" : ""
         );
         // VSU CABLE 2 EVENT
-    } else if (event->x() > 714 && event->y() > 441 &&
-               event->x() < 821 && event->y() < 568)
-    {
-        r130_cable_pit = !r130_cable_pit;
-        this->ui->r130_cable_bp->setStyleSheet(
-            r130_cable_pit ? "background-image: url(:/res/R130/Кабель.БП.png);" : ""
-        );
-        // PITANIYE EVENT
     } else if (event->x() > 41 && event->y() > 480 &&
                event->x() < 164 && event->y() < 560)
     {
@@ -109,6 +115,9 @@ void R130::mousePressEventRs(QMouseEvent *event) {
 }
 
 void R130::wheelEventRs(QWheelEvent *event) {
+    if (!r130_ziem)
+        return;
+
     if (event->x() > 250 && event->y() > 293 &&
             event->x() < 289 && event->y() < 333)
     {
@@ -175,57 +184,4 @@ void R130::wheelEventRs(QWheelEvent *event) {
         // todo check how it's actually rotating
         // R130 TON TLG EVENT
     }
-}
-//From R123
-void R130::updateOpacity()
-{
-    /*int rotate_delta = abs(getAngleToBeSetup() - angle_nastr);
-
-    if (regim_raboty == 3 && this->space_is_pressed && power_on)
-    {
-
-        setOpacity(0.0);
-        rotate_r123_ustr(33);
-        return;
-    }
-
-    if (!this->space_is_pressed) {
-        if (rotate_delta < 12)
-        {
-            this->controller.setNastr(true, countFrequency());
-            this->controller.activateRst(space_is_pressed);
-        } else {
-            this->controller.setNastr(false);
-            this->controller.activateRst(space_is_pressed);
-        }
-        setOpacity(0.);
-        rotate_r123_ustr(0);
-    }
-    else if (!this->power_on)
-    {
-
-        setOpacity(0.);
-        rotate_r123_ustr(0);
-        this->controller.setNastr(false);
-    }
-    else if (rotate_delta < 12)
-    {
-        setOpacity(1.0f);
-        rotate_r123_ustr(33);
-        this->controller.setNastr(true, countFrequency());
-        this->controller.activateRst(space_is_pressed);
-    } else if (rotate_delta < 40)
-    {
-        setOpacity(1.0f - float(rotate_delta - 12) / 28);
-        rotate_r123_ustr(int((1.0f - float(rotate_delta - 12) / 28) * 33));
-        this->controller.setNastr(false);
-    }
-    else
-    {
-        rotate_r123_ustr(0);
-        setOpacity(0.);
-        this->controller.setNastr(false);
-    }
-
-    this->controller.activateRst(this->space_is_pressed);*/
 }

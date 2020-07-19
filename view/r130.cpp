@@ -20,6 +20,7 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_vsu_cable_2_launched = false;
     r130_cable_pit = false;
     r130_cable_mtg = false;
+    r130_ziem = false;
     r130_smooth = PLAVNO;
     r130_control = 1;
     r130_regim = DEGURN;
@@ -52,7 +53,6 @@ void R130::mousePressEvent(QMouseEvent *event) {
     {
         mousePressEventRs(event);
     }
-    updateOpacity();
 }
 
 void R130::wheelEvent(QWheelEvent *event) {
@@ -60,11 +60,10 @@ void R130::wheelEvent(QWheelEvent *event) {
     {
        wheelEventVsua(event);
     }
-    else if (this->ui->tabWidget->currentIndex() == 0 && this->r123_ziemLaunched)
+    else if (this->ui->tabWidget->currentIndex() == 0)
     {
         wheelEventRs(event);
     }
-    updateOpacity();
 }
 
 void R130::apply_rotated_pixmap_to_widget(QLabel *widget_ptr, QPixmap *pixmap_ptr, qreal angle) {
@@ -92,61 +91,5 @@ void R130::mouseReleaseEvent(QMouseEvent *event)
         this->vsua_clk_ind_is_pressed = false;
         this->ui->vsua_clk_ind->setPixmap(pix);
     }
-    if (this->r123_ton_call_pressed == true)
-    {
-        static QPixmap pix(":/res/r123/vsua-nastr_fil.png");
-        this->r123_ton_call_pressed = false;
-        //controller.setIsTonCallPressed(false);
-        //this->ui->r123_ton_call->setPixmap(pix);
-    }
-    //updateOpacity();
-}
-
-void R130::keyPressEvent(QKeyEvent *ev)
-{
-    if (!ev->isAutoRepeat() && this->r123_canHandleKeys && this->r123_ziemLaunched)
-    {
-        if (regim_raboty == 1 || regim_raboty == 2)
-        {
-            if (ev->key() == Qt::Key_Space)
-            {
-                this->space_is_pressed = true;
-                updateOpacity();
-            }
-            //controller.keyPressHandler(ev);
-        }
-        else if (regim_raboty == 3)
-        {
-            if (ev->key() == Qt::Key_Space)
-            {
-                this->rotate_vsua_ustr(33);
-                this->space_is_pressed = true;
-                updateOpacity();
-            }
-        }
-    }
-}
-
-void R130::keyReleaseEvent(QKeyEvent *ev)
-{
-    if (!ev || (ev->key() == Qt::Key_Space && !ev->isAutoRepeat()))
-    {
-        //controller.keyReleaseHandler(ev);
-        this->space_is_pressed = false;
-        updateOpacity();
-    }
-}
-
-void R130::rotate_vsua_ustr(int angle)
-{
-    static QPixmap pix(":/res/r123/vsua-ustr.png");
-    QPixmap pixmap(pix);
-    QMatrix rm;
-
-    rm.rotate(angle);
-
-    pixmap = pixmap.transformed(rm);
-
-    ui->vsua_ustr->setPixmap(QPixmap(pixmap.transformed(rm)));
 }
 
