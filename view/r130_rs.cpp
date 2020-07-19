@@ -94,6 +94,17 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             30 * (*reinterpret_cast<int*>(&r130_rod_raboty) - 3)
         );
         // R130 ROD RABOTY EVENT
+    } else if (event->x() > 364 && event->y() > 107 &&
+               event->x() < 406 && event->y() < 151)
+    {
+        static QPixmap * r130_nastr_is_allowed_pixmap = new QPixmap(":/res/R130/НАСТРОЙКА.png");
+        r130_nastr_is_allowed = !r130_nastr_is_allowed;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_btn_nastroika, r130_nastr_is_allowed_pixmap,
+            r130_nastr_is_allowed ? 60 : 0
+        );
+
     }
 }
 
