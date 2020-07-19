@@ -104,7 +104,7 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             this->ui->r130_btn_nastroika, r130_nastr_is_allowed_pixmap,
             r130_nastr_is_allowed ? 60 : 0
         );
-
+        // R130 NASTR IS ALLOWED EVENT
     }
 }
 
