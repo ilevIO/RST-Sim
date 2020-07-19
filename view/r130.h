@@ -37,6 +37,8 @@ class R130 : public QMainWindow
     enum { DEGURN, _20, _100, KALIBR, NASTR_CZAST } r130_regim;
     enum { CZT, AM, OM, ATU, ATH } r130_rod_raboty;
 
+    int r130_uroven_pered;
+
     void apply_rotated_pixmap_to_widget(QLabel* widget_ptr, QPixmap * pixmap_ptr, qreal angle);
 
 public:

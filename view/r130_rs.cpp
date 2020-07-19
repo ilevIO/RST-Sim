@@ -98,5 +98,22 @@ void R130::mousePressEventRs(QMouseEvent *event) {
 }
 
 void R130::wheelEventRs(QWheelEvent *event) {
+    if (event->x() > 250 && event->y() > 293 &&
+            event->x() < 289 && event->y() < 333)
+    {
+        static QPixmap * r130_uroven_pered_pixmap = new QPixmap(":/res/R130/АВНАСТР.УРОВЕНЬ ПЕРЕДАЧИ.png");
 
+        if (event->angleDelta().ry() > 0 && r130_uroven_pered < 100)
+            r130_uroven_pered += 5;
+        if (event->angleDelta().ry() < 0 && r130_uroven_pered > 0)
+            r130_uroven_pered -= 5;
+
+        qDebug() << r130_uroven_pered;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_avnastr_level, r130_uroven_pered_pixmap,
+            (r130_uroven_pered - 50) * 1.4
+        );
+
+    }
 }
