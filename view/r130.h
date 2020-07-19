@@ -45,6 +45,7 @@ class R130 : public QMainWindow
     int r130_volume;
     int r130_amplify;
     int r130_ton_tlg;
+    int r130_frequency;
 
     void apply_rotated_pixmap_to_widget(QLabel* widget_ptr, QPixmap * pixmap_ptr, qreal angle);
     //From R123
