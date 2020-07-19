@@ -128,5 +128,20 @@ void R130::wheelEventRs(QWheelEvent *event) {
             r130_volume * 1.8
         );
         // R130 VOLUME EVENT
+    } else if (event->x() > 497 && event->y() > 295 &&
+               event->x() < 540 && event->y() < 335)
+    {
+        static QPixmap * r130_amplify_pixmap = new QPixmap(":/res/R130/УСИЛЕНИЕ.png");
+
+        if (event->angleDelta().ry() > 0 && r130_amplify < 100)
+            r130_amplify += 5;
+        if (event->angleDelta().ry() < 0 && r130_amplify > 0)
+            r130_amplify -= 5;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_amplify, r130_amplify_pixmap,
+            r130_amplify * 1.8
+        );
+        // R130 AMPLIFY EVENT
     }
 }
