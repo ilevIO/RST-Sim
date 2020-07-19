@@ -56,9 +56,15 @@ void R130::mousePressEvent(QMouseEvent *event) {
 }
 
 void R130::wheelEvent(QWheelEvent *event) {
-    if (this->ui->tabWidget->currentIndex() == 0) {
-        this->wheelEventRs(event);
+    if (this->ui->tabWidget->currentIndex() == 1)
+    {
+       wheelEventVsua(event);
     }
+    else if (this->ui->tabWidget->currentIndex() == 0 && this->r123_ziemLaunched)
+    {
+        wheelEventRs(event);
+    }
+    updateOpacity();
 }
 
 void R130::apply_rotated_pixmap_to_widget(QLabel *widget_ptr, QPixmap *pixmap_ptr, qreal angle) {
