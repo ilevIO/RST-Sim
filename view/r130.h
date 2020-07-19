@@ -40,6 +40,8 @@ class R130 : public QMainWindow
     enum { CZT, AM, OM, ATU, ATH } r130_rod_raboty;
     bool r130_nastr_is_allowed;
     bool r130_vkl_switcher;
+    enum { PRM, PRD } r130_prm_prd_switcher;
+    enum { RRU, ARU } r130_rru_aru_switcher;
 
     int r130_uroven_pered;
     int r130_volume;
