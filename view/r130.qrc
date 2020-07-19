@@ -22,5 +22,7 @@
         <file>res/R130/Кабель.ТЛФ-2.png</file>
         <file>res/R130/ПЛАВНО.png</file>
         <file>res/R130/НАСТРОЙКА.png</file>
+        <file>res/R130/power.jpg</file>
+        <file>res/R130/power_r.jpg</file>
     </qresource>
 </RCC>
