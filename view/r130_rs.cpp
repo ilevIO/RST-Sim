@@ -225,7 +225,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
     else if (event->x() > x1000minX && event->y() > x1000minY
              && event->x() < x1000maxX && event->y() < x1000maxY) {
         qDebug() << "Rotating X1000";
-        static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/x1000.png");
+        static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/X1000.png");
 
         if (event->angleDelta().ry() > 0) {
             r130_frequency += 4;
@@ -244,7 +244,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
     }
     else if (event->x() > x100minX && event->y() > x100minY
              && event->x() < x100maxX && event->y() < x100maxY) {
-        static QPixmap * r130_x100_pixmap = new QPixmap(":/res/R130/x100.png");
+        static QPixmap * r130_x100_pixmap = new QPixmap(":/res/R130/X100.png");
         qDebug() << "Rotating X100";
 
         if (event->angleDelta().ry() > 0) {
@@ -264,7 +264,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
     }
     else if (event->x() > x1minX && event->y() > x1minY
              && event->x() < x1maxX && event->y() < x1maxY) {
-        static QPixmap * r130_x1_pixmap = new QPixmap(":/res/R130/x1.png");
+        static QPixmap * r130_x1_pixmap = new QPixmap(":/res/R130/X1.png");
         qDebug() << "Rotating X1";
 
         if (event->angleDelta().ry() > 0) {
