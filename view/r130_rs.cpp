@@ -154,6 +154,26 @@ void R130::wheelEventRs(QWheelEvent *event) {
             r130_amplify * 1.8
         );
         // R130 AMPLIFY EVENT
+    } else if (event->x() > 422 && event->y() > 113 &&
+               event->x() < 507 && event->y() < 194)
+    {
+        static QPixmap * r130_ton_tlg_pixmap = new QPixmap(":/res/R130/ТОН ТЛГ.png");
+
+        if (event->angleDelta().ry() > 0)
+            r130_ton_tlg += 4;
+        if (event->angleDelta().ry() < 0)
+            r130_ton_tlg -= 4;
+
+        r130_ton_tlg = r130_ton_tlg > 360 ? r130_ton_tlg - 360 : r130_ton_tlg;
+        r130_ton_tlg = r130_ton_tlg < 0 ? r130_ton_tlg + 360  : r130_ton_tlg;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_ton_tlg, r130_ton_tlg_pixmap,
+            r130_ton_tlg
+        );
+
+        // todo check how it's actually rotating
+        // R130 TON TLG EVENT
     }
 }
 //From R123

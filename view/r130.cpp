@@ -29,6 +29,7 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_uroven_pered = 50;
     r130_volume = 0;
     r130_amplify = 0;
+    r130_ton_tlg = 0;
 }
 
 R130::~R130()
@@ -69,7 +70,8 @@ void R130::apply_rotated_pixmap_to_widget(QLabel *widget_ptr, QPixmap *pixmap_pt
 
     widget_ptr->setPixmap(pixmap);
 }
-//From R123
+
+
 void R130::mouseReleaseEvent(QMouseEvent *event)
 {
     if (this->vsua_nast_is_pressed == true)
