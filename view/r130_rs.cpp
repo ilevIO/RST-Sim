@@ -2,6 +2,7 @@
 #include "ui_r130.h"
 #include <QMouseEvent>
 #include <QPixmap>
+#include <QDebug>
 
 
 void R130::mousePressEventRs(QMouseEvent *event) {
@@ -52,7 +53,7 @@ void R130::mousePressEventRs(QMouseEvent *event) {
     } else if (event->x() > 146 && event->y() > 283 &&
                event->x() < 206 && event->y() < 343)
     {
-        QPixmap * r130_control_pixmap = new QPixmap(":/res/R130/АВНАСТР.КОНТРОЛЬ.png");
+        static QPixmap * r130_control_pixmap = new QPixmap(":/res/R130/АВНАСТР.КОНТРОЛЬ.png");
         if (event->button() == Qt::LeftButton && r130_control < 11)
             r130_control++;
         if (event->button() == Qt::RightButton && r130_control > 1)
@@ -63,5 +64,39 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             30 * (r130_control - 1)
         );
         // R130 CONTROL EVENT
+    } else if (event->x() > 142 && event->y() > 370 &&
+               event->x() < 201 && event->y() < 424)
+    {
+        static QPixmap *r130_regim_pixmap = new QPixmap(":/res/R130/АВНАСТР.РЕЖИМ.png");
+
+        if (event->button() == Qt::LeftButton && r130_regim != NASTR_CZAST)
+            (*reinterpret_cast<int*>(&r130_regim))++;
+        if (event->button() == Qt::RightButton && r130_regim != DEGURN)
+            (*reinterpret_cast<int*>(&r130_regim))--;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_avnast_regime, r130_regim_pixmap,
+            30 * (*reinterpret_cast<int*>(&r130_regim))
+        );
+        // R130 REGIM RABOTY EVENT
+    } else if (event->x() > 236 && event->y() > 365 &&
+               event->x() < 301 && event->y() < 428)
+    {
+        static QPixmap * r130_rod_raboty_pixmap = new QPixmap(":/res/R130/АВНАСТР.РОД РАБОТЫ.png");
+
+        if (event->button() == Qt::LeftButton && r130_rod_raboty != ATH)
+            (*reinterpret_cast<int*>(&r130_rod_raboty))++;
+        if (event->button() == Qt::RightButton && r130_rod_raboty != CZT)
+            (*reinterpret_cast<int*>(&r130_rod_raboty))--;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_avnastr_rod, r130_rod_raboty_pixmap,
+            30 * (*reinterpret_cast<int*>(&r130_rod_raboty) - 3)
+        );
+        // R130 ROD RABOTY EVENT
     }
+}
+
+void R130::wheelEventRs(QWheelEvent *event) {
+
 }

@@ -22,6 +22,8 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_cable_mtg = false;
     r130_smooth = PLAVNO;
     r130_control = 1;
+    r130_regim = DEGURN;
+    r130_rod_raboty = ATU;
 }
 
 R130::~R130()
@@ -40,7 +42,9 @@ void R130::mousePressEvent(QMouseEvent *event) {
 }
 
 void R130::wheelEvent(QWheelEvent *event) {
-
+    if (this->ui->tabWidget->currentIndex() == 0) {
+        this->wheelEventRs(event);
+    }
 }
 
 void R130::apply_rotated_pixmap_to_widget(QLabel *widget_ptr, QPixmap *pixmap_ptr, qreal angle) {
