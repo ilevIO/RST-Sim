@@ -36,6 +36,7 @@ SOURCES += \
     controller/r123rststatecontroller.cpp \
     controller/r123statecontroller.cpp \
     controller/r123vsuastatecontroller.cpp \
+    controller/r130controller.cpp \
     instruments/idsynchronizator.cpp \
         main.cpp \
     view/r123_bp.cpp \
@@ -66,6 +67,7 @@ HEADERS += \
     controller/r123rststatecontroller.h \
     controller/r123statecontroller.h \
     controller/r123vsuastatecontroller.h \
+    controller/r130controller.h \
     instruments/idsynchronizator.h \
     view/r130.h \
     view/r173.h \

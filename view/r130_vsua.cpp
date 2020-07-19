@@ -1,7 +1,8 @@
 #include "r123.h"
-#include "ui_r123.h"
+#include "ui_r130.h"
 #include "QDebug"
-/*
+#include "r130.h"
+
 void R130::wheelEventVsua(QWheelEvent * event) {
     this->keyReleaseEvent(nullptr);
     static int angle_us_ch = 0, angle_vrt = 0;
@@ -54,7 +55,7 @@ void R130::wheelEventVsua(QWheelEvent * event) {
 }
 
 
-void R123::mousePressEventVsua(QMouseEvent * event) {
+void R130::mousePressEventVsua(QMouseEvent * event) {
    this->keyReleaseEvent(nullptr);
    static bool ukv_connected = false;
    static bool ukv_ant = false, ukv_ant_launch[4] = {false, false, false, false};
@@ -65,7 +66,7 @@ void R123::mousePressEventVsua(QMouseEvent * event) {
            && event->x() < 257 && event->y() < 339)
    {
        ukv_connected = !ukv_connected;
-       this->controller.setVsuaProvodLauched(ukv_connected);
+       //this->controller.setVsuaProvodLauched(ukv_connected);
        if (ukv_connected)
            this->ui->vsua_ukv->setStyleSheet("background-image: url(:/res/r123/launch_ukv_vsua.png);");
        else
@@ -94,14 +95,14 @@ void R123::mousePressEventVsua(QMouseEvent * event) {
                ukv_ant_launch[i] = false;
            ukv_ant_launch[0] = true;
 
-           this->controller.setVsuaAntenaLaunched(true);
+           //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant1->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
        }
        else
        {
             ukv_ant = false;
             ukv_ant_launch[0] = false;
-            this->controller.setVsuaAntenaLaunched(false);
+            //this->controller.setVsuaAntenaLaunched(false);
             this->ui->vsua_ant1->setStyleSheet("");
        }
    }
@@ -118,12 +119,12 @@ void R123::mousePressEventVsua(QMouseEvent * event) {
            for (int i = 0; i < 4; i++)
                ukv_ant_launch[i] = false;
            ukv_ant_launch[1] = true;
-           this->controller.setVsuaAntenaLaunched(true);
+           //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant2->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
        }
        else
        {
-           this->controller.setVsuaAntenaLaunched(false);
+           //this->controller.setVsuaAntenaLaunched(false);
             ukv_ant = false;
             ukv_ant_launch[1] = false;
             this->ui->vsua_ant2->setStyleSheet("");
@@ -142,12 +143,12 @@ void R123::mousePressEventVsua(QMouseEvent * event) {
            for (int i = 0; i < 4; i++)
                ukv_ant_launch[i] = false;
            ukv_ant_launch[2] = true;
-           this->controller.setVsuaAntenaLaunched(true);
+           //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant3->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
        }
        else
        {
-            this->controller.setVsuaAntenaLaunched(false);
+            //this->controller.setVsuaAntenaLaunched(false);
             ukv_ant = false;
             ukv_ant_launch[2] = false;
             this->ui->vsua_ant3->setStyleSheet("");
@@ -166,12 +167,12 @@ void R123::mousePressEventVsua(QMouseEvent * event) {
            for (int i = 0; i < 4; i++)
                ukv_ant_launch[i] = false;
            ukv_ant_launch[3] = true;
-           this->controller.setVsuaAntenaLaunched(true);
+           //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant4->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
        }
        else
        {
-            this->controller.setVsuaAntenaLaunched(false);
+           // this->controller.setVsuaAntenaLaunched(false);
             ukv_ant = false;
             ukv_ant_launch[3] = false;
             this->ui->vsua_ant4->setStyleSheet("");
@@ -442,4 +443,4 @@ void R123::mousePressEventVsua(QMouseEvent * event) {
        this->vsua_clk_ind_is_pressed = true;
        this->ui->vsua_clk_ind->setPixmap(pix);
    }
-}*/
+}

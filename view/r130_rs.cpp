@@ -156,3 +156,56 @@ void R130::wheelEventRs(QWheelEvent *event) {
         // R130 AMPLIFY EVENT
     }
 }
+//From R123
+void R130::updateOpacity()
+{
+    /*int rotate_delta = abs(getAngleToBeSetup() - angle_nastr);
+
+    if (regim_raboty == 3 && this->space_is_pressed && power_on)
+    {
+
+        setOpacity(0.0);
+        rotate_r123_ustr(33);
+        return;
+    }
+
+    if (!this->space_is_pressed) {
+        if (rotate_delta < 12)
+        {
+            this->controller.setNastr(true, countFrequency());
+            this->controller.activateRst(space_is_pressed);
+        } else {
+            this->controller.setNastr(false);
+            this->controller.activateRst(space_is_pressed);
+        }
+        setOpacity(0.);
+        rotate_r123_ustr(0);
+    }
+    else if (!this->power_on)
+    {
+
+        setOpacity(0.);
+        rotate_r123_ustr(0);
+        this->controller.setNastr(false);
+    }
+    else if (rotate_delta < 12)
+    {
+        setOpacity(1.0f);
+        rotate_r123_ustr(33);
+        this->controller.setNastr(true, countFrequency());
+        this->controller.activateRst(space_is_pressed);
+    } else if (rotate_delta < 40)
+    {
+        setOpacity(1.0f - float(rotate_delta - 12) / 28);
+        rotate_r123_ustr(int((1.0f - float(rotate_delta - 12) / 28) * 33));
+        this->controller.setNastr(false);
+    }
+    else
+    {
+        rotate_r123_ustr(0);
+        setOpacity(0.);
+        this->controller.setNastr(false);
+    }
+
+    this->controller.activateRst(this->space_is_pressed);*/
+}
