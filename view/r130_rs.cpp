@@ -221,7 +221,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
 
         // todo check how it's actually rotating
         // R130 TON TLG EVENT
-    } else if (event->x() > 374 && event->y() > 227 &&
+    } else if (event->x() > 374 && event->y() > 227 && r130_nastr_is_allowed &&
                event->x() < 476 && event->y() < 324)
 //    else if (event->x() > x1000minX && event->y() > x1000minY
 //             && event->x() < x1000maxX && event->y() < x1000maxY)
@@ -241,7 +241,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
             r130_x1000_angle
         );
         // R130 FREQUENCY X1000 ROTATING EVENT
-    } else if (event->x() > 550 && event->y() > 212 &&
+    } else if (event->x() > 550 && event->y() > 212 && r130_nastr_is_allowed &&
                event->x() < 655 && event->y() < 322)
 //    else if (event->x() > x100minX && event->y() > x100minY
 //             && event->x() < x100maxX && event->y() < x100maxY)
@@ -262,7 +262,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
             r130_x100_angle
         );
         // R130 FREQUENCY X100 ROTATING EVENT
-    } else if (event->x() > 678 && event->y() > 211 &&
+    } else if (event->x() > 678 && event->y() > 211 && r130_nastr_is_allowed &&
                event->x() < 788 && event->y() < 331)
 //    else if (event->x() > x1minX && event->y() > x1minY
 //             && event->x() < x1maxX && event->y() < x1maxY)
