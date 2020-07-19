@@ -39,11 +39,19 @@ R130::~R130()
 void R130::mousePressEvent(QMouseEvent *event) {
     qDebug() << "x: " << event->x() << " y: " << event->y();
 
-    if (this->ui->tabWidget->currentIndex() == 2) {
+    if(this->ui->tabWidget->currentIndex() == 2)
+    {
         mousePressEventBp(event);
-    } else if (this->ui->tabWidget->currentIndex() == 0) {
+    }
+    else if (this->ui->tabWidget->currentIndex() == 1)
+    {
+        mousePressEventVsua(event);
+    }
+    else if (this->ui->tabWidget->currentIndex() == 0)
+    {
         mousePressEventRs(event);
     }
+    updateOpacity();
 }
 
 void R130::wheelEvent(QWheelEvent *event) {
