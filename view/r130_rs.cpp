@@ -111,6 +111,36 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             r130_nastr_is_allowed ? 60 : 0
         );
         // R130 NASTR IS ALLOWED EVENT
+    } else if (event->x() > 661 && event->y() > 441 &&
+               event->x() < 705 && event->y() < 481)
+    {
+        r130_vkl_switcher = !r130_vkl_switcher;
+
+        this->ui->r130_vkl_switch->setStyleSheet(
+            r130_vkl_switcher ? "background-image: url(:/res/R130/power_vert.png);"
+                              : "background-image: url(:/res/R130/power_vert_r.png);"
+        );
+        // R130 POWER VKL SWITCHER EVENT
+    } else if (event->x() > 563 && event->y() > 130 &&
+               event->x() < 613 && event->y() < 177)
+    {
+        r130_prm_prd_switcher = r130_prm_prd_switcher == PRD ? PRM : PRD;
+
+        this->ui->r130_prm_prd_switch->setStyleSheet(
+            r130_prm_prd_switcher == PRM ? "background-image: url(:/res/R130/power_r.png);" :
+                                           "background-image: url(:/res/R130/power.png);"
+        );
+        // R130 PRM PRD SWITCHER EVENT
+    } else if (event->x() > 682 && event->y() > 125 &&
+               event->x() < 726 && event->y() < 177)
+    {
+        r130_rru_aru_switcher = r130_rru_aru_switcher == RRU ? ARU : RRU;
+
+        this->ui->r130_rru_aru_switch->setStyleSheet(
+            r130_rru_aru_switcher == RRU ? "background-image: url(:/res/R130/power_r.png);" :
+                                           "background-image: url(:/res/R130/power.png);"
+        );
+        // R130 RRU ARU SWITCHER EVENT
     }
 }
 
