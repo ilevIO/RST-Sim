@@ -56,6 +56,7 @@ void R130::wheelEventVsua(QWheelEvent * event) {
 
 void R130::mousePressEventVsua(QMouseEvent * event) {
    static bool ukv_connected = false;
+   static bool kv_connected = false;
    static bool ukv_ant = false, ukv_ant_launch[4] = {false, false, false, false};
 
    qDebug() << "x - " << event->x() << " y - " << event->y();
@@ -440,5 +441,16 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
        static QPixmap pix(":/res/r123/vsua-clk_ind.png");
        this->vsua_clk_ind_is_pressed = true;
        this->ui->vsua_clk_ind->setPixmap(pix);
+   }
+   else if (event->x() > 770 && event->y() > 300 && ukv_ziem
+            && event->x() < 830 && event->y() < 350)
+   {
+       //KV VSUA CORD
+       kv_connected = !kv_connected;
+       //this->controller.setVsuaProvodLauched(ukv_connected);
+       if (kv_connected)
+           this->ui->vsua_kv->setStyleSheet("background-image: url(:/res/r123/launch_kv_vsua.png);");
+       else
+           this->ui->vsua_kv->setStyleSheet("");
    }
 }

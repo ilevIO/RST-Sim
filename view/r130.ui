@@ -25,7 +25,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="r130_tab">
        <property name="sizePolicy">
@@ -757,9 +757,9 @@
        <widget class="QLabel" name="vsua_kv">
         <property name="geometry">
          <rect>
-          <x>720</x>
-          <y>200</y>
-          <width>91</width>
+          <x>730</x>
+          <y>256</y>
+          <width>101</width>
           <height>91</height>
          </rect>
         </property>
