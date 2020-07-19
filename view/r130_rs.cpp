@@ -108,12 +108,25 @@ void R130::wheelEventRs(QWheelEvent *event) {
         if (event->angleDelta().ry() < 0 && r130_uroven_pered > 0)
             r130_uroven_pered -= 5;
 
-        qDebug() << r130_uroven_pered;
-
         this->apply_rotated_pixmap_to_widget(
             this->ui->r130_avnastr_level, r130_uroven_pered_pixmap,
-            (r130_uroven_pered - 50) * 1.4
+            (r130_uroven_pered - 50) * 1.8
         );
+        // R130 UROVEN PEREDACZI EVENT
+    } else if (event->x() > 328 && event->y() > 293 &&
+               event->x() < 369 && event->y() < 333)
+    {
+        static QPixmap * r130_volume_pixmap = new QPixmap(":/res/R130/ГРОМКОСТЬ.png");
 
+        if (event->angleDelta().ry() > 0 && r130_volume < 100)
+            r130_volume += 5;
+        if (event->angleDelta().ry() < 0 && r130_volume > 0)
+            r130_volume -= 5;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_volume, r130_volume_pixmap,
+            r130_volume * 1.8
+        );
+        // R130 VOLUME EVENT
     }
 }
