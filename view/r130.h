@@ -39,6 +39,7 @@ class R130 : public QMainWindow
     enum { DEGURN, _20, _100, KALIBR, NASTR_CZAST } r130_regim;
     enum { CZT, AM, OM, ATU, ATH } r130_rod_raboty;
     bool r130_nastr_is_allowed;
+    bool r130_vkl_switcher;
 
     int r130_uroven_pered;
     int r130_volume;

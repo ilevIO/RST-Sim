@@ -111,6 +111,16 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             r130_nastr_is_allowed ? 60 : 0
         );
         // R130 NASTR IS ALLOWED EVENT
+    } else if (event->x() > 661 && event->y() > 441 &&
+               event->x() < 705 && event->y() < 481)
+    {
+        r130_vkl_switcher = !r130_vkl_switcher;
+
+        this->ui->r130_vkl_switch->setStyleSheet(
+            r130_vkl_switcher ? "background-image: url(:/res/R130/power_vert.png);"
+                              : "background-image: url(:/res/R130/power_vert_r.png);"
+        );
+        // R130 POWER VKL SWITCHER EVENT
     }
 }
 

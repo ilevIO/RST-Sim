@@ -26,6 +26,7 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_regim = DEGURN;
     r130_rod_raboty = ATU;
     r130_nastr_is_allowed = false;
+    r130_vkl_switcher = false;
 
     r130_uroven_pered = 50;
     r130_volume = 0;
