@@ -377,10 +377,10 @@
        <widget class="QLabel" name="r130_prm_prd_switch">
         <property name="geometry">
          <rect>
-          <x>563</x>
-          <y>105</y>
-          <width>31</width>
-          <height>31</height>
+          <x>560</x>
+          <y>100</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -393,10 +393,10 @@
        <widget class="QLabel" name="r130_rru_aru_switch">
         <property name="geometry">
          <rect>
-          <x>678</x>
-          <y>104</y>
-          <width>31</width>
-          <height>31</height>
+          <x>680</x>
+          <y>100</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -409,14 +409,14 @@
        <widget class="QLabel" name="r130_vkl_switch">
         <property name="geometry">
          <rect>
-          <x>660</x>
-          <y>413</y>
-          <width>31</width>
-          <height>31</height>
+          <x>653</x>
+          <y>409</y>
+          <width>41</width>
+          <height>41</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/power.jpg);</string>
+         <string notr="true">background-image: url(:/res/R130/power_vert_r.jpg);</string>
         </property>
         <property name="text">
          <string/>

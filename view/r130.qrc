@@ -24,5 +24,7 @@
         <file>res/R130/НАСТРОЙКА.png</file>
         <file>res/R130/power.jpg</file>
         <file>res/R130/power_r.jpg</file>
+        <file>res/R130/power_vert.jpg</file>
+        <file>res/R130/power_vert_r.jpg</file>
     </qresource>
 </RCC>
