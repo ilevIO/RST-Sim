@@ -384,7 +384,7 @@
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/power.jpg);</string>
+         <string notr="true">background-image: url(:/res/R130/power.png);</string>
         </property>
         <property name="text">
          <string/>
@@ -400,7 +400,7 @@
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/power.jpg);</string>
+         <string notr="true">background-image: url(:/res/R130/power.png);</string>
         </property>
         <property name="text">
          <string/>
@@ -416,7 +416,7 @@
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-image: url(:/res/R130/power_vert_r.jpg);</string>
+         <string notr="true">background-image: url(:/res/R130/power_vert_r.png);</string>
         </property>
         <property name="text">
          <string/>
@@ -858,9 +858,9 @@
   </widget>
  </widget>
  <resources>
-  <include location="r130.qrc"/>
   <include location="r173.qrc"/>
   <include location="r123.qrc"/>
+  <include location="r130.qrc"/>
  </resources>
  <connections/>
 </ui>
