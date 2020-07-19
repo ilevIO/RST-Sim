@@ -4,7 +4,6 @@
 #include "r130.h"
 
 void R130::wheelEventVsua(QWheelEvent * event) {
-    this->keyReleaseEvent(nullptr);
     static int angle_us_ch = 0, angle_vrt = 0;
     static QPixmap * vsua_nast_ch = new QPixmap(":/res/r123/vsua_naptr_kr.png");
     static QPixmap * vsua_vrt = new QPixmap(":/res/r123/vsua_vrt.png");
@@ -56,7 +55,6 @@ void R130::wheelEventVsua(QWheelEvent * event) {
 
 
 void R130::mousePressEventVsua(QMouseEvent * event) {
-   this->keyReleaseEvent(nullptr);
    static bool ukv_connected = false;
    static bool ukv_ant = false, ukv_ant_launch[4] = {false, false, false, false};
 
