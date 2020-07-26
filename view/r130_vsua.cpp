@@ -4,6 +4,20 @@
 #include "r130.h"
 #include <iostream>
 
+void R130::changeIndicator(int angle_vrt) {
+    static int angle_ustr = 0;
+    static QPixmap * vsua_ustr = new QPixmap(":/res/r123/r123_ustr.png");
+    QPixmap pixmap(*vsua_ustr);
+    QMatrix rm;
+
+    angle_ustr = angle_vrt/8;
+
+    rm.rotate(angle_ustr);
+
+    pixmap = pixmap.transformed(rm);
+    this->ui->vsua_ustr->setPixmap(QPixmap(pixmap.transformed(rm)));
+}
+
 void R130::wheelEventVsua(QWheelEvent * event) {
     static int angle_us_ch = -0, angle_vrt = 0;
     static QPixmap * vsua_nast_ch = new QPixmap(":/res/r123/vsua_naptr_kr.png");
@@ -92,6 +106,9 @@ void R130::wheelEventVsua(QWheelEvent * event) {
     if (event->pos().rx() > 694 && event->pos().ry() > 374 && ukv_ziem
             && event->pos().rx() < 762 && event->pos().ry() < 435)
     {
+        //Плавная настройка антенн
+        //влияет на Уй
+        //издает звук
         QPixmap pixmap(*vsua_vrt);
         QMatrix rm;
 
@@ -110,6 +127,8 @@ void R130::wheelEventVsua(QWheelEvent * event) {
         pixmap = pixmap.transformed(rm);
 
         this->ui->vsua_vrt->setPixmap(QPixmap(pixmap.transformed(rm)));
+        changeIndicator(angle_vrt);
+
     }
 }
 
@@ -159,6 +178,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
 
            //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant1->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
+           this->vsua_controller.connected_tip_antenni = 0;
        }
        else
        {
@@ -166,6 +186,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             ukv_ant_launch[0] = false;
             //this->controller.setVsuaAntenaLaunched(false);
             this->ui->vsua_ant1->setStyleSheet("");
+            this->vsua_controller.connected_tip_antenni = -1;
        }
    }
    else if (event->x() > 372 && event->y() > 174 && ukv_ziem
@@ -184,6 +205,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            ukv_ant_launch[1] = true;
            //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant2->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
+           this->vsua_controller.connected_tip_antenni = 1;
        }
        else
        {
@@ -191,6 +213,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             ukv_ant = false;
             ukv_ant_launch[1] = false;
             this->ui->vsua_ant2->setStyleSheet("");
+            this->vsua_controller.connected_tip_antenni = -1;
        }
    }
    else if (event->x() > 434 && event->y() > 174 && ukv_ziem
@@ -209,6 +232,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            ukv_ant_launch[2] = true;
            //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant3->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
+           this->vsua_controller.connected_tip_antenni = 2;
        }
        else
        {
@@ -216,7 +240,8 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             ukv_ant = false;
             ukv_ant_launch[2] = false;
             this->ui->vsua_ant3->setStyleSheet("");
-       };
+            this->vsua_controller.connected_tip_antenni = -1;
+       }
    }
    else if (event->x() > 488 && event->y() > 174 && ukv_ziem
             && event->x() < 533 && event->y() < 223)
@@ -234,6 +259,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            ukv_ant_launch[3] = true;
            //this->controller.setVsuaAntenaLaunched(true);
            this->ui->vsua_ant4->setStyleSheet("background-image: url(:/res/r123/vsua-antenna.png);");
+           this->vsua_controller.connected_tip_antenni = 3;
        }
        else
        {
@@ -241,6 +267,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             ukv_ant = false;
             ukv_ant_launch[3] = false;
             this->ui->vsua_ant4->setStyleSheet("");
+            this->vsua_controller.connected_tip_antenni = -1;
        }
    }
    else if (event->x() > 648 && event->y() > 281 && ukv_ziem
@@ -478,6 +505,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            rotate(34);
            break;
        }
+       this->vsua_controller.grub_nastr_antenn_freq = napr;
    }
    else if (event->x() > 311 && event->y() > 234 && ukv_ziem
             && event->x() < 349 && event->y() < 265)
@@ -488,10 +516,12 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
         if (is_on) {
             this->ui->vsua_ind_switch->setPixmap(off);
             is_on = false;
+            this->vsua_controller.indication_tumbler = false;
         }
         else {
             this->ui->vsua_ind_switch->setPixmap(on);
             is_on = true;
+            this->vsua_controller.indication_tumbler = true;
         }
    }
    else if (event->x() > 288 && event->y() > 438 && ukv_ziem

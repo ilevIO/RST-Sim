@@ -25,6 +25,7 @@ class R130 : public QMainWindow
 
     void wheelEvent(QWheelEvent * event) override;
     void wheelEventVsua(QWheelEvent * event);
+    void changeIndicator(int angle_vrt);
     void wheelEventRs(QWheelEvent * event);
 
     bool bp_zem;

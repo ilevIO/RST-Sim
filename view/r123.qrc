@@ -36,7 +36,6 @@
         <file>res/r123/r123_control_ui.png</file>
         <file>res/r123/r123_simp.png</file>
         <file>res/r123/r123_zpcz.png</file>
-        <file>res/r123/r123_ustr.png</file>
         <file>res/r123/vsua-ustr.png</file>
         <file>res/r123/numbers/r123_poddiap1.png</file>
         <file>res/r123/numbers/r123_poddiap1_on.png</file>
@@ -95,5 +94,6 @@
         <file>res/r123/Rotations/r123_cz_1111.png</file>
         <file>res/r123/line/r123_line_new.png</file>
         <file>res/r123/launch_kv_vsua.png</file>
+        <file>res/r123/r123_ustr.png</file>
     </qresource>
 </RCC>
