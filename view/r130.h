@@ -1,11 +1,13 @@
 #ifndef R130_H
 #define R130_H
 
+#define R130_DEBUG true
+
 #include <QMainWindow>
 #include "controller/networkcontroller/abstractnetworkcontroller.h"
 #include <QLabel>
 #include "controller/r130controller.h"
-
+#include "controller/r130vsuacontroller.h"
 namespace Ui {
 class r130;
 }
@@ -62,7 +64,10 @@ class R130 : public QMainWindow
 
     bool vsua_nast_is_pressed;
     bool vsua_clk_ind_is_pressed;
+
+    bool did_setup = false;
 public:
+    R130VSUAController vsua_controller;
     explicit R130(QString IP, bool is_server, AbstractNetworkController * controller);
     ~R130();
 private:

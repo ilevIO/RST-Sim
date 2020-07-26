@@ -2,32 +2,92 @@
 #include "ui_r130.h"
 #include "QDebug"
 #include "r130.h"
+#include <iostream>
 
 void R130::wheelEventVsua(QWheelEvent * event) {
-    static int angle_us_ch = 0, angle_vrt = 0;
+    static int angle_us_ch = -0, angle_vrt = 0;
     static QPixmap * vsua_nast_ch = new QPixmap(":/res/r123/vsua_naptr_kr.png");
     static QPixmap * vsua_vrt = new QPixmap(":/res/r123/vsua_vrt.png");
+
+    static int delta = 8;
     if (event->pos().rx() > 276 && event->pos().ry() > 344 && ukv_ziem
             && event->pos().rx() < 331 && event->pos().ry() < 397)
     {
         QPixmap pixmap(*vsua_nast_ch);
         QMatrix rm;
+        if (event->angleDelta().ry() > 0) {
+            if (angle_us_ch < 25) {
+                if (delta > 3) {
+                    delta -= 1;
+                } else {
+                    delta = 3;
+                }
+            } else if (angle_us_ch >= 26 && angle_us_ch <= 41) {
+                delta = 3;
+            } else if (angle_us_ch >= 42 && angle_us_ch <= 54) {
+                delta = 2;
+            } else if (angle_us_ch >= 55 && angle_us_ch < 64) {
+                delta = 1;
+            } else if (angle_us_ch >= 64) {
+                delta = 0;
+            }
+            angle_us_ch += delta;
+            if (angle_us_ch > 64) {
+                angle_us_ch = 64;
+                delta = 0;
+            }
+            if (delta != 0) {
+                vsua_controller.freq_ukv += 1;
 
-        if (event->angleDelta().ry() > 0)
-            angle_us_ch += 4;
-        else if (event->angleDelta().ry() < 0)
-            angle_us_ch -= 4;
+                rm.rotate(angle_us_ch - 83);
 
-        if (angle_us_ch > 360)
-            angle_us_ch -= 360;
-        if (angle_us_ch < -360)
-            angle_us_ch += 360;
+                pixmap = pixmap.transformed(rm);
+                this->ui->vsua_ustcz->setPixmap(QPixmap(pixmap.transformed(rm)));
 
-        rm.rotate(angle_us_ch);
+                qDebug() << angle_us_ch;
+                qDebug() << "freq: " << vsua_controller.freq_ukv;
+                qDebug() << "________";
+            }
+        }
+        else if (event->angleDelta().ry() < 0) {
+            if (angle_us_ch < 25 && angle_us_ch >= 0) {
+                if (delta < 3) {
+                    delta = 3;
+                } else if (delta < 7) {
+                    delta = delta + 1;
+                } else if (delta == 7) {
+                } else {
+                    delta = 0;
+                }
+            } else if (angle_us_ch >= 26 && angle_us_ch <= 41) {
+                delta = 3;
+            } else if (angle_us_ch >= 42 && angle_us_ch <= 54) {
+                delta = 2;
+            } else if (angle_us_ch >= 55 && angle_us_ch < 64) {
+                delta = 1;
+            } else if (angle_us_ch == 0) {
+                delta = 0;
+            }
+            angle_us_ch -= delta;
+            if (delta == 0) {
+                delta = 8;
+            } else {
 
-        pixmap = pixmap.transformed(rm);
+                rm.rotate(angle_us_ch - 83);
 
-        this->ui->vsua_ustcz->setPixmap(QPixmap(pixmap.transformed(rm)));
+                pixmap = pixmap.transformed(rm);
+                this->ui->vsua_ustcz->setPixmap(QPixmap(pixmap.transformed(rm)));
+                vsua_controller.freq_ukv -= 1;
+                if (angle_us_ch <= 0) {
+                    angle_us_ch = 0;
+                    vsua_controller.freq_ukv = 20;
+                    delta = 8;
+                }
+                qDebug() << angle_us_ch;
+                qDebug() << "freq: " << vsua_controller.freq_ukv;
+                qDebug() << "________";
+            }
+        }
     }
     if (event->pos().rx() > 694 && event->pos().ry() > 374 && ukv_ziem
             && event->pos().rx() < 762 && event->pos().ry() < 435)
@@ -65,8 +125,9 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            && event->x() < 257 && event->y() < 339)
    {
        ukv_connected = !ukv_connected;
+       this->vsua_controller.ukv_connected = !this->vsua_controller.ukv_connected;
        //this->controller.setVsuaProvodLauched(ukv_connected);
-       if (ukv_connected)
+       if (this->vsua_controller.ukv_connected)
            this->ui->vsua_ukv->setStyleSheet("background-image: url(:/res/r123/launch_ukv_vsua.png);");
        else
            this->ui->vsua_ukv->setStyleSheet("");
@@ -75,14 +136,16 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             && event->x() < 368 && event->y() < 575)
    {
        ukv_ziem = !ukv_ziem;
-       if (ukv_ziem)
+       this->vsua_controller.ground_connected = !vsua_controller.ground_connected;
+       if (vsua_controller.ground_connected)
            this->ui->vsua_ziem->setStyleSheet("background-image: url(:/res/r123/vsua-ziem.png);");
        else
            this->ui->vsua_ziem->setStyleSheet("");
    }
-   else if (event->x() > 286 && event->y() > 174 && ukv_ziem
+   else if (event->x() > 286 && event->y() > 174 && vsua_controller.ground_connected
             && event->x() < 340 && event->y() < 223)
    {
+       qDebug() << "ukv_ant_launch 0";
        this->ui->vsua_ant2->setStyleSheet("");
        this->ui->vsua_ant3->setStyleSheet("");
        this->ui->vsua_ant4->setStyleSheet("");
@@ -108,6 +171,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
    else if (event->x() > 372 && event->y() > 174 && ukv_ziem
             && event->x() < 426 && event->y() < 223)
    {
+       qDebug() << "ukv_ant_launch 1";
        this->ui->vsua_ant1->setStyleSheet("");
        this->ui->vsua_ant3->setStyleSheet("");
        this->ui->vsua_ant4->setStyleSheet("");
@@ -132,6 +196,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
    else if (event->x() > 434 && event->y() > 174 && ukv_ziem
             && event->x() < 487 && event->y() < 223)
    {
+       qDebug() << "ukv_ant_launch 2";
        this->ui->vsua_ant1->setStyleSheet("");
        this->ui->vsua_ant2->setStyleSheet("");
        this->ui->vsua_ant4->setStyleSheet("");
@@ -156,6 +221,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
    else if (event->x() > 488 && event->y() > 174 && ukv_ziem
             && event->x() < 533 && event->y() < 223)
    {
+       qDebug() << "ukv_ant_launch 3";
        this->ui->vsua_ant1->setStyleSheet("");
        this->ui->vsua_ant2->setStyleSheet("");
        this->ui->vsua_ant3->setStyleSheet("");
