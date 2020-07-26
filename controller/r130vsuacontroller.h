@@ -26,7 +26,7 @@ public:
 
     bool isSetupAsExample() {
         bool nastr_indication_is_max = (abs(nastr_indication - R130_VSUA_INDICATOR_MAX_VALUE) < 5);
-        bool tipi_antenn_match = (tip_antennu == connected_tip_antenni);
+        bool tipi_antenn_match = (tip_antenni == connected_tip_antenni);
         return nastr_indication_is_max && tipi_antenn_match;
     }
 
