@@ -163,7 +163,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
     if (help_open) {
         this->ui->vsua_help->setStyleSheet("");
         help_open = false;
-    } else if (event->x() > 460 && event->y() > 285 && vsua_controller.ground_connected
+    } else if (event->x() > 460 && event->y() > 285 //&& vsua_controller.ground_connected
                && event->x() < 620 && event->y() < 365) {
         this->ui->vsua_help->setStyleSheet("background-image: url(:/res/r123/vsua_help.png);");
         help_open = true;
