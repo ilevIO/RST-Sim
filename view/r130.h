@@ -71,6 +71,8 @@ class R130 : public QMainWindow
     int r130_x100_angle;
     int r130_x1000_angle;
 
+    int r130_done_setup_frequency;
+
     void apply_rotated_pixmap_to_widget(QLabel* widget_ptr, QPixmap * pixmap_ptr, qreal angle);
     //From R123
 //    friend class R130Controller;

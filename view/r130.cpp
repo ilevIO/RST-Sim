@@ -42,6 +42,8 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_x1_angle = 0;
     r130_x100_angle = 0;
     r130_x1000_angle = 0;
+
+    r130_done_setup_frequency = 0;
 }
 
 R130::~R130()
@@ -119,10 +121,10 @@ void R130::mouseReleaseEvent(QMouseEvent *event)
 void R130::block_until_nastroyka_done() {
     block_all = !block_all;
 
-    if (block_all)
-        this->r130_setup_is_done = true;
-
     if (block_all) {
+        this->r130_setup_is_done = true;
+        this->r130_done_setup_frequency = count_frequency();
+        qDebug() << r130_done_setup_frequency;
         this->ui->r130_nastroyka_diod->setStyleSheet("background-image: url(:/res/R130/r130_nastroyka.png);");
     } else {
         this->ui->r130_nastroyka_diod->setStyleSheet("");
