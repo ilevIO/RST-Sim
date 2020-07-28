@@ -28,5 +28,6 @@
         <file>res/R130/power_vert_r.png</file>
         <file>res/R130/vsua_error.png</file>
         <file>res/R130/r130_diezh_priyom.png</file>
+        <file>res/R130/r130_nastroyka.png</file>
     </qresource>
 </RCC>

@@ -91,6 +91,7 @@ void R130::mousePressEventRs(QMouseEvent *event) {
     {
         static QPixmap *r130_regim_pixmap = new QPixmap(":/res/R130/АВНАСТР.РЕЖИМ.png");
 
+        auto old_regim = r130_regim;
         if (event->button() == Qt::LeftButton && r130_regim != NASTR_CZAST)
             (*reinterpret_cast<int*>(&r130_regim))++;
         if (event->button() == Qt::RightButton && r130_regim != DEGURN)
@@ -100,6 +101,12 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             this->ui->r130_avnast_regime, r130_regim_pixmap,
             30 * (*reinterpret_cast<int*>(&r130_regim))
         );
+
+        if (r130_regim == NASTR_CZAST && bp_pit && bp_vsua && r130_cable_pit && r130_vkl_switcher &&
+                old_regim != r130_regim)
+        {
+            this->r130_nastroyka_thread.start();
+        }
         // R130 REGIM RABOTY EVENT
     } else if (event->x() > 236 && event->y() > 365 &&
                event->x() < 301 && event->y() < 428)
@@ -327,14 +334,13 @@ void R130::r130_rotate_ampermetr(int angle) {
 
 void R130::update_r130_rst() {
 
-    if (r130_prm_prd_switcher == PRM && r130_regim == DEGURN && bp_pit && bp_zem && r130_cable_pit && r130_vkl_switcher) {
+    if (r130_prm_prd_switcher == PRM && r130_regim == DEGURN && bp_pit && bp_vsua && r130_cable_pit && r130_vkl_switcher) {
         this->ui->r130_dezh_priyom_opacity->setStyleSheet("background-image: url(:/res/R130/r130_diezh_priyom.png);");
         this->r130_rotate_ampermetr(45);
     } else {
         this->ui->r130_dezh_priyom_opacity->setStyleSheet("");
         this->r130_rotate_ampermetr(0);
     }
-
 }
 
 int R130::count_frequency() {
