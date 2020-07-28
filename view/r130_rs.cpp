@@ -103,7 +103,7 @@ void R130::mousePressEventRs(QMouseEvent *event) {
         );
 
         if (r130_regim == NASTR_CZAST && bp_pit && bp_vsua && r130_cable_pit && r130_vkl_switcher &&
-                old_regim != r130_regim)
+                old_regim != r130_regim && r130_rru_aru_switcher == ARU)
         {
             this->r130_nastroyka_thread.start();
         }
