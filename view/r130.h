@@ -68,6 +68,9 @@ class R130 : public QMainWindow
     bool vsua_clk_ind_is_pressed;
 
     bool did_setup = false;
+
+    void update_r130_rst();
+    void r130_rotate_ampermetr(int angle);
 public:
     R130VSUAController vsua_controller;
     explicit R130(QString IP, bool is_server, AbstractNetworkController * controller);

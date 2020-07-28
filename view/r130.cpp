@@ -59,6 +59,7 @@ void R130::mousePressEvent(QMouseEvent *event) {
     {
         mousePressEventRs(event);
     }
+    update_r130_rst();
 }
 
 void R130::wheelEvent(QWheelEvent *event) {
@@ -70,6 +71,7 @@ void R130::wheelEvent(QWheelEvent *event) {
     {
         wheelEventRs(event);
     }
+    update_r130_rst();
 }
 
 void R130::apply_rotated_pixmap_to_widget(QLabel *widget_ptr, QPixmap *pixmap_ptr, qreal angle) {
@@ -97,5 +99,6 @@ void R130::mouseReleaseEvent(QMouseEvent *event)
         this->vsua_clk_ind_is_pressed = false;
         this->ui->vsua_clk_ind->setPixmap(pix);
     }
+    update_r130_rst();
 }
 

@@ -317,3 +317,23 @@ void R130::wheelEventRs(QWheelEvent *event) {
     /*else if (event->x() > 374 && event->y() > 227 && r130_nastr_is_allowed &&
                event->x() < 476 && event->y() < 324)*/
 }
+
+void R130::r130_rotate_ampermetr(int angle) {
+    static QPixmap * arrow = new QPixmap(":/res/R130/Амперметр.Стрелка.png");
+    this->apply_rotated_pixmap_to_widget(
+      this->ui->r130_ampermetr_line, arrow, angle
+    );
+}
+
+void R130::update_r130_rst() {
+
+    if (r130_prm_prd_switcher == PRM && r130_regim == DEGURN && bp_pit && bp_zem && r130_cable_pit && r130_vkl_switcher) {
+        this->ui->r130_dezh_priyom_opacity->setStyleSheet("background-image: url(:/res/R130/r130_diezh_priyom.png);");
+        this->r130_rotate_ampermetr(45);
+    } else {
+        this->ui->r130_dezh_priyom_opacity->setStyleSheet("");
+        this->r130_rotate_ampermetr(0);
+    }
+
+
+}
