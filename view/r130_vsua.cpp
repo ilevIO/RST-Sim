@@ -39,7 +39,7 @@ void R130::wheelEventVsua(QWheelEvent * event) {
     static QPixmap * vsua_vrt = new QPixmap(":/res/r123/vsua_vrt.png");
 
     static int delta = 8;
-    if (event->pos().rx() > 276 && event->pos().ry() > 344 && ukv_ziem
+    if (event->pos().rx() > 276 && event->pos().ry() > 344 && vsua_controller.ground_connected
             && event->pos().rx() < 331 && event->pos().ry() < 397)
     {
         QPixmap pixmap(*vsua_nast_ch);
@@ -118,7 +118,7 @@ void R130::wheelEventVsua(QWheelEvent * event) {
             }
         }
     }
-    if (event->pos().rx() > 694 && event->pos().ry() > 374 && ukv_ziem
+    if (event->pos().rx() > 694 && event->pos().ry() > 374 && vsua_controller.ground_connected
             && event->pos().rx() < 762 && event->pos().ry() < 435)
     {
         //Плавная настройка антенн
@@ -164,12 +164,12 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
     if (help_open) {
         this->ui->vsua_help->setStyleSheet("");
         help_open = false;
-    } else if (event->x() > 460 && event->y() > 285 && ukv_ziem
+    } else if (event->x() > 460 && event->y() > 285 && vsua_controller.ground_connected
                && event->x() < 620 && event->y() < 365) {
         this->ui->vsua_help->setStyleSheet("background-image: url(:/res/r123/vsua_help.png);");
         help_open = true;
     }
-   else if (event->x() > 209 && event->y() > 234 && ukv_ziem
+   else if (event->x() > 209 && event->y() > 234 && vsua_controller.ground_connected
            && event->x() < 257 && event->y() < 339)
    {
        ukv_connected = !ukv_connected;
@@ -218,7 +218,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             this->vsua_controller.connected_tip_antenni = -1;
        }
    }
-   else if (event->x() > 372 && event->y() > 174 && ukv_ziem
+   else if (event->x() > 372 && event->y() > 174 && vsua_controller.ground_connected
             && event->x() < 426 && event->y() < 223)
    {
        qDebug() << "ukv_ant_launch 1";
@@ -245,7 +245,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             this->vsua_controller.connected_tip_antenni = -1;
        }
    }
-   else if (event->x() > 434 && event->y() > 174 && ukv_ziem
+   else if (event->x() > 434 && event->y() > 174 && vsua_controller.ground_connected
             && event->x() < 487 && event->y() < 223)
    {
        qDebug() << "ukv_ant_launch 2";
@@ -272,7 +272,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             this->vsua_controller.connected_tip_antenni = -1;
        }
    }
-   else if (event->x() > 488 && event->y() > 174 && ukv_ziem
+   else if (event->x() > 488 && event->y() > 174 && vsua_controller.ground_connected
             && event->x() < 533 && event->y() < 223)
    {
        qDebug() << "ukv_ant_launch 3";
@@ -299,7 +299,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             this->vsua_controller.connected_tip_antenni = -1;
        }
    }
-   else if (event->x() > 648 && event->y() > 281 && ukv_ziem
+   else if (event->x() > 648 && event->y() > 281 && vsua_controller.ground_connected
             && event->x() < 690 && event->y() < 314)
    {
        static int position = 7, napr = -1;
@@ -378,7 +378,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            break;
        }
    }
-   else if (event->x() > 571 && event->y() > 197 && ukv_ziem
+   else if (event->x() > 571 && event->y() > 197 && vsua_controller.ground_connected
             && event->x() < 615 && event->y() < 237)
    {
        static int position = 3, napr = -1;
@@ -417,7 +417,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            break;
        }
    }
-   else if (event->x() > 540 && event->y() > 392 && ukv_ziem
+   else if (event->x() > 540 && event->y() > 392 && vsua_controller.ground_connected
             && event->x() < 588 && event->y() < 433)
    {
        static int position = 3, napr = 1;
@@ -476,7 +476,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            break;
        }
    }
-   else if (event->x() > 404 && event->y() > 333 && ukv_ziem
+   else if (event->x() > 404 && event->y() > 333 && vsua_controller.ground_connected
             && event->x() < 459 && event->y() < 388)
    {
        static int position = 2, napr = 1;
@@ -536,7 +536,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
        }
        this->vsua_controller.grub_nastr_antenn_freq = napr;
    }
-   else if (event->x() > 311 && event->y() > 234 && ukv_ziem
+   else if (event->x() > 311 && event->y() > 234 && vsua_controller.ground_connected
             && event->x() < 349 && event->y() < 265)
    {
         static bool is_on = true;
@@ -553,21 +553,21 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
             this->vsua_controller.indication_tumbler = true;
         }
    }
-   else if (event->x() > 288 && event->y() > 438 && ukv_ziem
+   else if (event->x() > 288 && event->y() > 438 && vsua_controller.ground_connected
             && event->x() < 322 && event->y() < 464)
    {
        static QPixmap pix(":/res/r123/vsua-nastr_fil_r.png");
        this->vsua_nast_is_pressed = true;
        this->ui->vsua_nastr_fil->setPixmap(pix);
    }
-   else if (event->x() > 316 && event->y() > 284 && ukv_ziem
+   else if (event->x() > 316 && event->y() > 284 && vsua_controller.ground_connected
             && event->x() < 344 && event->y() < 304)
    {
        static QPixmap pix(":/res/r123/vsua-clk_ind.png");
        this->vsua_clk_ind_is_pressed = true;
        this->ui->vsua_clk_ind->setPixmap(pix);
    }
-   else if (event->x() > 770 && event->y() > 300 && ukv_ziem
+   else if (event->x() > 770 && event->y() > 300 && vsua_controller.ground_connected
             && event->x() < 830 && event->y() < 350)
    {
        //KV VSUA CORD
