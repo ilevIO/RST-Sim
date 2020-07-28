@@ -144,12 +144,19 @@ public:
         int i = 0;
         for (;
              (i < table_states.size())
-             && (table_states[i].matches(/*frequency,*/tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq));
+             && !(table_states[i].matches(/*frequency,*/tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq));
              i++) {
         }
         bool according_to_table = i < table_states.size();
         qDebug() << "tip_antenni: " << tip_antenni;
         qDebug() << "tipi_antenn_match: " << tipi_antenn_match;
+
+        if (according_to_table) {
+            qDebug() << "table_state: " << "frequencies: " << table_states[i].frequency_range.min << "-" << table_states[i].frequency_range.max;
+
+        } else {
+            qDebug() << "table_state: not found";
+        }
         return nastr_indication_is_max && tipi_antenn_match && according_to_table;
     }
 
