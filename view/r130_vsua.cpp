@@ -11,8 +11,12 @@ void R130::changeIndicator(int angle_vrt, int delta) {
         static QPixmap * vsua_ustr = new QPixmap(":/res/r123/r123_ustr.png");
         QPixmap pixmap(*vsua_ustr);
         QMatrix rm;
+        qDebug() << "In: " << angle_vrt;
+        qDebug() << "sin: " << sin(abs(angle_vrt/2)*3.1415/180);
 
-        angle_ustr = (abs(angle_vrt/8.0) <= R130_VSUA_INDICATOR_MAX_VALUE ? abs(angle_vrt/8.0) : 2*R130_VSUA_INDICATOR_MAX_VALUE - abs(angle_vrt/8));
+        angle_ustr = abs(sin(abs(angle_vrt/2)*3.1415/180) * 60); //(abs(angle_vrt/8.0) <= R130_VSUA_INDICATOR_MAX_VALUE ? abs(angle_vrt/8.0) : 2*R130_VSUA_INDICATOR_MAX_VALUE - abs(angle_vrt/8));
+
+        qDebug() << "Out: " << angle_ustr;
 
         rm.rotate(angle_ustr);
 
