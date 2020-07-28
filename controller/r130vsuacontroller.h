@@ -109,6 +109,19 @@ public:
     bool kv_connected = false;
     bool ground_connected = false;
 
+    bool is_vsua_ok_with_this_frequency(float frequency) {
+        int i = 0;
+        for (;
+             (i < table_states.size())
+             && (table_states[i].matches(/*frequency,*/tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq));
+             i++) {
+        }
+        if ((i < table_states.size()) && (table_states[i].frequency_range.contains(frequency))) {
+            return true;
+        }
+        return false;
+    }
+
     bool isSetupAsExample() {
         bool nastr_indication_is_max = true; //affects noise //((abs(nastr_indication - R130_VSUA_INDICATOR_MAX_VALUE) < 5) || true);
         bool tipi_antenn_match = false;// (tip_antenni == connected_tip_antenni);
@@ -127,13 +140,14 @@ public:
                 break;
             }
         }
-        for (int i = 0;
+        int i = 0;
+        for (;
              (i < table_states.size())
              && (table_states[i].matches(/*frequency,*/tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq));
              i++) {
-
         }
-        return nastr_indication_is_max && tipi_antenn_match;
+        bool according_to_table = i < table_states.size();
+        return nastr_indication_is_max && tipi_antenn_match && according_to_table;
     }
 
     void makeSoundFrequencyTone() {
