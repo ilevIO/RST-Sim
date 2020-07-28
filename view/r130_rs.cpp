@@ -6,6 +6,16 @@
 
 
 void R130::mousePressEventRs(QMouseEvent *event) {
+
+    int x1000centerX = 430, x1000centerY = 270, x1000radiusW = 111/2, x1000radiusH = 111/2;
+    int x100centerX = 605, x100centerY = 270, x100radiusW = 101/2, x100radiusH = 101/2;
+    int x1centerX = 740, x1centerY = 270, x1radiusW = 101/2, x1radiusH = 101/2;
+
+    int x1000minX = x1000centerX - x1000radiusW, x1000maxX = x1000centerX + x1000radiusW, x1000minY = x1000centerY - x1000radiusH, x1000maxY = x1000centerY + x1000radiusH;
+    int x100minX = x100centerX - x100radiusW, x100maxX = x100centerX + x100radiusW, x100minY = x100centerY - x100radiusH, x100maxY = x100centerY + x100radiusH;
+    int x1minX = x1centerX - x1radiusW, x1maxX = x1centerX + x1radiusW, x1minY = x1centerY - x1radiusH, x1maxY = x1centerY + x1radiusH;
+
+
     if (this->vsua_controller.isSetupAsExample()) {
         this->ui->r130_vsua_error->setStyleSheet("");
 
@@ -148,6 +158,87 @@ void R130::mousePressEventRs(QMouseEvent *event) {
         );
         // R130 RRU ARU SWITCHER EVENT
     }
+    else if (event->x() > x1000minX && event->y() > x1000minY && r130_nastr_is_allowed
+             && event->x() < x1000maxX && event->y() < x1000maxY)
+    {
+        static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/X100.png");
+
+//        if (event->angleDelta().ry() > 0)
+//            r130_x1000_angle += 40;
+//        if (event->angleDelta().ry() < 0)
+//            r130_x1000_angle -= 40;
+
+        if (event->button() == Qt::LeftButton)
+            r130_x1000_angle += r130_x1000_angle == 108 ? 0 : 36;
+        if (event->button() == Qt::RightButton)
+            r130_x1000_angle += r130_x1000_angle == -216 ? 0 : -36;
+
+//        r130_x1000_angle = r130_x1000_angle > 360 ? r130_x1000_angle - 360 : r130_x1000_angle;
+//        r130_x1000_angle = r130_x1000_angle < 0 ? r130_x1000_angle + 360  : r130_x1000_angle;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_freq_x1000, r130_x1000_pixmap,
+            r130_x1000_angle
+        );
+        qDebug() << "X1000 Rotate";
+        // R130 FREQUENCY X1000 ROTATING EVENT
+    } else if (event->x() > 550 && event->y() > 212 && r130_nastr_is_allowed &&
+               event->x() < 655 && event->y() < 322)
+//    else if (event->x() > x100minX && event->y() > x100minY
+//             && event->x() < x100maxX && event->y() < x100maxY)
+
+        {
+        static QPixmap * r130_x100_pixmap = new QPixmap(":/res/R130/X100.png");
+
+//        if (event->angleDelta().ry() > 0)
+//            r130_x100_angle += 40;
+//        if (event->angleDelta().ry() < 0)
+//            r130_x100_angle -= 40;
+
+        if (event->button() == Qt::LeftButton)
+            r130_x100_angle += r130_x100_angle == 108 ? 0 : 36;
+        if (event->button() == Qt::RightButton)
+            r130_x100_angle += r130_x100_angle == -216 ? 0 : -36;
+
+
+//        r130_x100_angle = r130_x100_angle > 360 ? r130_x100_angle - 360 : r130_x100_angle;
+//        r130_x100_angle = r130_x100_angle < 0 ? r130_x100_angle + 360  : r130_x100_angle;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_freq_x100, r130_x100_pixmap,
+            r130_x100_angle
+        );
+        qDebug() << "X100 Rotate";
+        // R130 FREQUENCY X100 ROTATING EVENT
+    }
+    /*else if (event->x() > 678 && event->y() > 211 && r130_nastr_is_allowed &&
+               event->x() < 788 && event->y() < 331)*/
+    else if (event->x() > x1minX && event->y() > x1minY && r130_nastr_is_allowed
+             && event->x() < x1maxX && event->y() < x1maxY)
+    {
+        static QPixmap * r130_x1_pixmap = new QPixmap(":/res/R130/X1.png");
+
+//        if (event->angleDelta().ry() > 0)
+//            r130_x1_angle += 60;
+//        if (event->angleDelta().ry() < 0)
+//            r130_x1_angle -= 60;
+
+        if (event->button() == Qt::LeftButton)
+            r130_x1_angle += r130_x1_angle == 72 ? 0 : 36;
+        if (event->button() == Qt::RightButton)
+            r130_x1_angle += r130_x1_angle == -252 ? 0 : -36;
+
+
+//        r130_x1_angle = r130_x1_angle > 360 ? r130_x1_angle - 360 : r130_x1_angle;
+//        r130_x1_angle = r130_x1_angle < 0 ? r130_x1_angle + 360  : r130_x1_angle;
+
+        this->apply_rotated_pixmap_to_widget(
+            this->ui->r130_freq_x1, r130_x1_pixmap,
+            r130_x1_angle
+        );
+        qDebug() << "X1 Rotate";
+        // R130 FREQUENCY X1 ROTATING EVENT
+    }
 }
 
 void R130::wheelEventRs(QWheelEvent *event) {
@@ -156,13 +247,6 @@ void R130::wheelEventRs(QWheelEvent *event) {
     if (!r130_ziem)
         return;
 #endif
-    int x1000centerX = 430, x1000centerY = 270, x1000radiusW = 111/2, x1000radiusH = 111/2;
-    int x100centerX = 605, x100centerY = 270, x100radiusW = 101/2, x100radiusH = 101/2;
-    int x1centerX = 740, x1centerY = 270, x1radiusW = 101/2, x1radiusH = 101/2;
-
-    int x1000minX = x1000centerX - x1000radiusW, x1000maxX = x1000centerX + x1000radiusW, x1000minY = x1000centerY - x1000radiusH, x1000maxY = x1000centerY + x1000radiusH;
-    int x100minX = x100centerX - x100radiusW, x100maxX = x100centerX + x100radiusW, x100minY = x100centerY - x100radiusH, x100maxY = x100centerY + x100radiusH;
-    int x1minX = x1centerX - x1radiusW, x1maxX = x1centerX + x1radiusW, x1minY = x1centerY - x1radiusH, x1maxY = x1centerY + x1radiusH;
 
     if (event->x() > 250 && event->y() > 293 &&
             event->x() < 289 && event->y() < 333)
@@ -232,68 +316,4 @@ void R130::wheelEventRs(QWheelEvent *event) {
     }
     /*else if (event->x() > 374 && event->y() > 227 && r130_nastr_is_allowed &&
                event->x() < 476 && event->y() < 324)*/
-    else if (event->x() > x1000minX && event->y() > x1000minY && r130_nastr_is_allowed
-             && event->x() < x1000maxX && event->y() < x1000maxY)
-    {
-        static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/X100.png");
-
-        if (event->angleDelta().ry() > 0)
-            r130_x1000_angle += 40;
-        if (event->angleDelta().ry() < 0)
-            r130_x1000_angle -= 40;
-
-        r130_x1000_angle = r130_x1000_angle > 360 ? r130_x1000_angle - 360 : r130_x1000_angle;
-        r130_x1000_angle = r130_x1000_angle < 0 ? r130_x1000_angle + 360  : r130_x1000_angle;
-
-        this->apply_rotated_pixmap_to_widget(
-            this->ui->r130_freq_x1000, r130_x1000_pixmap,
-            r130_x1000_angle
-        );
-        qDebug() << "X1000 Rotate";
-        // R130 FREQUENCY X1000 ROTATING EVENT
-    } else if (event->x() > 550 && event->y() > 212 && r130_nastr_is_allowed &&
-               event->x() < 655 && event->y() < 322)
-//    else if (event->x() > x100minX && event->y() > x100minY
-//             && event->x() < x100maxX && event->y() < x100maxY)
-
-        {
-        static QPixmap * r130_x100_pixmap = new QPixmap(":/res/R130/X100.png");
-
-        if (event->angleDelta().ry() > 0)
-            r130_x100_angle += 40;
-        if (event->angleDelta().ry() < 0)
-            r130_x100_angle -= 40;
-
-        r130_x100_angle = r130_x100_angle > 360 ? r130_x100_angle - 360 : r130_x100_angle;
-        r130_x100_angle = r130_x100_angle < 0 ? r130_x100_angle + 360  : r130_x100_angle;
-
-        this->apply_rotated_pixmap_to_widget(
-            this->ui->r130_freq_x100, r130_x100_pixmap,
-            r130_x100_angle
-        );
-        qDebug() << "X100 Rotate";
-        // R130 FREQUENCY X100 ROTATING EVENT
-    }
-    /*else if (event->x() > 678 && event->y() > 211 && r130_nastr_is_allowed &&
-               event->x() < 788 && event->y() < 331)*/
-    else if (event->x() > x1minX && event->y() > x1minY && r130_nastr_is_allowed
-             && event->x() < x1maxX && event->y() < x1maxY)
-    {
-        static QPixmap * r130_x1_pixmap = new QPixmap(":/res/R130/X1.png");
-
-        if (event->angleDelta().ry() > 0)
-            r130_x1_angle += 60;
-        if (event->angleDelta().ry() < 0)
-            r130_x1_angle -= 60;
-
-        r130_x1_angle = r130_x1_angle > 360 ? r130_x1_angle - 360 : r130_x1_angle;
-        r130_x1_angle = r130_x1_angle < 0 ? r130_x1_angle + 360  : r130_x1_angle;
-
-        this->apply_rotated_pixmap_to_widget(
-            this->ui->r130_freq_x1, r130_x1_pixmap,
-            r130_x1_angle
-        );
-        qDebug() << "X1 Rotate";
-        // R130 FREQUENCY X1 ROTATING EVENT
-    }
 }

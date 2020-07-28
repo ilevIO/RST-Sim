@@ -153,7 +153,6 @@ void R130::wheelEventVsua(QWheelEvent * event) {
     }
 }
 
-
 void R130::mousePressEventVsua(QMouseEvent * event) {
    static bool ukv_connected = false;
    static bool kv_connected = false;
