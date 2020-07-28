@@ -95,5 +95,6 @@
         <file>res/r123/line/r123_line_new.png</file>
         <file>res/r123/launch_kv_vsua.png</file>
         <file>res/r123/r123_ustr.png</file>
+        <file>res/r123/vsua_help.png</file>
     </qresource>
 </RCC>

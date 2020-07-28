@@ -6,6 +6,12 @@
 
 
 void R130::mousePressEventRs(QMouseEvent *event) {
+    if (this->vsua_controller.isSetupAsExample()) {
+        this->ui->r130_vsua_error->setStyleSheet("");
+
+    } else {
+        this->ui->r130_vsua_error->setStyleSheet("background-image: url(:/res/R130/vsua_error.png);");
+    }
     if (event->x() > 714 && event->y() > 441 &&
             event->x() < 821 && event->y() < 568)
        {
@@ -232,9 +238,9 @@ void R130::wheelEventRs(QWheelEvent *event) {
         static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/X100.png");
 
         if (event->angleDelta().ry() > 0)
-            r130_x1000_angle += 4;
+            r130_x1000_angle += 40;
         if (event->angleDelta().ry() < 0)
-            r130_x1000_angle -= 4;
+            r130_x1000_angle -= 40;
 
         r130_x1000_angle = r130_x1000_angle > 360 ? r130_x1000_angle - 360 : r130_x1000_angle;
         r130_x1000_angle = r130_x1000_angle < 0 ? r130_x1000_angle + 360  : r130_x1000_angle;
@@ -254,9 +260,9 @@ void R130::wheelEventRs(QWheelEvent *event) {
         static QPixmap * r130_x100_pixmap = new QPixmap(":/res/R130/X100.png");
 
         if (event->angleDelta().ry() > 0)
-            r130_x100_angle += 4;
+            r130_x100_angle += 40;
         if (event->angleDelta().ry() < 0)
-            r130_x100_angle -= 4;
+            r130_x100_angle -= 40;
 
         r130_x100_angle = r130_x100_angle > 360 ? r130_x100_angle - 360 : r130_x100_angle;
         r130_x100_angle = r130_x100_angle < 0 ? r130_x100_angle + 360  : r130_x100_angle;
@@ -276,9 +282,9 @@ void R130::wheelEventRs(QWheelEvent *event) {
         static QPixmap * r130_x1_pixmap = new QPixmap(":/res/R130/X1.png");
 
         if (event->angleDelta().ry() > 0)
-            r130_x1_angle += 4;
+            r130_x1_angle += 60;
         if (event->angleDelta().ry() < 0)
-            r130_x1_angle -= 4;
+            r130_x1_angle -= 60;
 
         r130_x1_angle = r130_x1_angle > 360 ? r130_x1_angle - 360 : r130_x1_angle;
         r130_x1_angle = r130_x1_angle < 0 ? r130_x1_angle + 360  : r130_x1_angle;

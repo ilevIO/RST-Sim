@@ -26,5 +26,6 @@
         <file>res/R130/power_r.png</file>
         <file>res/R130/power_vert.png</file>
         <file>res/R130/power_vert_r.png</file>
+        <file>res/R130/vsua_error.png</file>
     </qresource>
 </RCC>

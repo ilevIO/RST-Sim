@@ -3,15 +3,16 @@
 #include "QDebug"
 #include "r130.h"
 #include <iostream>
+#include <math.h>
 
-void R130::changeIndicator(int angle_vrt) {
+void R130::changeIndicator(int angle_vrt, int delta) {
     static int angle_ustr = 0;
     if (this->bp_pit && this->bp_vsua) {
         static QPixmap * vsua_ustr = new QPixmap(":/res/r123/r123_ustr.png");
         QPixmap pixmap(*vsua_ustr);
         QMatrix rm;
 
-        angle_ustr = angle_vrt/8;
+        angle_ustr = (abs(angle_vrt/8.0) <= R130_VSUA_INDICATOR_MAX_VALUE ? abs(angle_vrt/8.0) : 2*R130_VSUA_INDICATOR_MAX_VALUE - abs(angle_vrt/8));
 
         rm.rotate(angle_ustr);
 
@@ -125,12 +126,13 @@ void R130::wheelEventVsua(QWheelEvent * event) {
         //издает звук
         QPixmap pixmap(*vsua_vrt);
         QMatrix rm;
-
-        if (event->angleDelta().ry() > 0)
-            angle_vrt += 4;
+        int delta = 4;
+        if (event->angleDelta().ry() > 0) {
+            delta = 4;
+        }
         else if (event->angleDelta().ry() < 0)
-            angle_vrt -= 4;
-
+            delta= -4;
+        angle_vrt += delta;
         if (angle_vrt > 360)
             angle_vrt -= 360;
         if (angle_vrt < -360)
@@ -141,8 +143,13 @@ void R130::wheelEventVsua(QWheelEvent * event) {
         pixmap = pixmap.transformed(rm);
 
         this->ui->vsua_vrt->setPixmap(QPixmap(pixmap.transformed(rm)));
-        changeIndicator(angle_vrt);
+        changeIndicator(angle_vrt, delta);
 
+    }
+    if (!this->vsua_controller.isSetupAsExample()) {
+        this->ui->r130_vsua_error->setStyleSheet("background-image: url(:/res/R130/vsua_error.png);");
+    } else {
+        this->ui->r130_vsua_error->setStyleSheet("");
     }
 }
 
@@ -153,8 +160,16 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
    static bool ukv_ant = false, ukv_ant_launch[4] = {false, false, false, false};
 
    qDebug() << "x - " << event->x() << " y - " << event->y();
-
-   if (event->x() > 209 && event->y() > 234 && ukv_ziem
+    static bool help_open = false;
+    if (help_open) {
+        this->ui->vsua_help->setStyleSheet("");
+        help_open = false;
+    } else if (event->x() > 460 && event->y() > 285 && ukv_ziem
+               && event->x() < 620 && event->y() < 365) {
+        this->ui->vsua_help->setStyleSheet("background-image: url(:/res/r123/vsua_help.png);");
+        help_open = true;
+    }
+   else if (event->x() > 209 && event->y() > 234 && ukv_ziem
            && event->x() < 257 && event->y() < 339)
    {
        ukv_connected = !ukv_connected;
@@ -563,4 +578,10 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
        else
            this->ui->vsua_kv->setStyleSheet("");
    }
+
+    if (!this->vsua_controller.isSetupAsExample()) {
+        this->ui->r130_vsua_error->setStyleSheet("background-image: url(:/res/R130/vsua_error.png);");
+    } else {
+        this->ui->r130_vsua_error->setStyleSheet("");
+    }
 }

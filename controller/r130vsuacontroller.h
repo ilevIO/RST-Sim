@@ -18,7 +18,7 @@ public:
 
     int tip_antenni = 0;
     int connected_tip_antenni = -1;
-    int fiksatsia_nastr = 0;
+    int indikatsia_nastr = 0;
 
     //cables:
     bool ukv_connected = false;
@@ -26,8 +26,23 @@ public:
     bool ground_connected = false;
 
     bool isSetupAsExample() {
-        bool nastr_indication_is_max = (abs(nastr_indication - R130_VSUA_INDICATOR_MAX_VALUE) < 5);
-        bool tipi_antenn_match = (tip_antenni == connected_tip_antenni);
+        bool nastr_indication_is_max = ((abs(nastr_indication - R130_VSUA_INDICATOR_MAX_VALUE) < 5) || true);
+        bool tipi_antenn_match = false;// (tip_antenni == connected_tip_antenni);
+        if (connected_tip_antenni == 0) {
+            tipi_antenn_match = (tip_antenni == 0 && indikatsia_nastr == 0 || tip_antenni == 1 && indikatsia_nastr == 1);
+        } else {
+            switch (connected_tip_antenni) {
+            case 1:
+                tipi_antenn_match = (indikatsia_nastr == 0) && (tip_antenni == 2);
+                break;
+            case 2:
+                tipi_antenn_match = (tip_antenni == 3 && indikatsia_nastr == 2);
+                break;
+            case 3:
+                tipi_antenn_match = (tip_antenni == 4 && indikatsia_nastr == 2);
+                break;
+            }
+        }
         return nastr_indication_is_max && tipi_antenn_match;
     }
 
