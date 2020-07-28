@@ -6,20 +6,34 @@
 
 void R130::changeIndicator(int angle_vrt) {
     static int angle_ustr = 0;
-    static QPixmap * vsua_ustr = new QPixmap(":/res/r123/r123_ustr.png");
-    QPixmap pixmap(*vsua_ustr);
-    QMatrix rm;
+    if (this->bp_pit && this->bp_vsua) {
+        static QPixmap * vsua_ustr = new QPixmap(":/res/r123/r123_ustr.png");
+        QPixmap pixmap(*vsua_ustr);
+        QMatrix rm;
 
-    angle_ustr = angle_vrt/8;
+        angle_ustr = angle_vrt/8;
 
-    rm.rotate(angle_ustr);
+        rm.rotate(angle_ustr);
 
-    pixmap = pixmap.transformed(rm);
-    this->ui->vsua_ustr->setPixmap(QPixmap(pixmap.transformed(rm)));
+        pixmap = pixmap.transformed(rm);
+        this->ui->vsua_ustr->setPixmap(QPixmap(pixmap.transformed(rm)));
+    } else {
+        int angle_vrt = 0;
+        static QPixmap * vsua_ustr = new QPixmap(":/res/r123/r123_ustr.png");
+        QPixmap pixmap(*vsua_ustr);
+        QMatrix rm;
+
+        angle_ustr = angle_vrt/8;
+
+        rm.rotate(0);
+
+        pixmap = pixmap.transformed(rm);
+        this->ui->vsua_ustr->setPixmap(QPixmap(pixmap.transformed(rm)));
+    }
 }
 
 void R130::wheelEventVsua(QWheelEvent * event) {
-    static int angle_us_ch = -0, angle_vrt = 0;
+    static int angle_us_ch = -0;
     static QPixmap * vsua_nast_ch = new QPixmap(":/res/r123/vsua_naptr_kr.png");
     static QPixmap * vsua_vrt = new QPixmap(":/res/r123/vsua_vrt.png");
 

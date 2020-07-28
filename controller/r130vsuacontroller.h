@@ -1,9 +1,10 @@
 #ifndef R13VSUACONTROLLER_H
 #define R13VSUACONTROLLER_H
 
-#define R130_VSUA_INDICATOR_MAX_VALUE 50
 
 #include <math.h>
+
+const int R130_VSUA_INDICATOR_MAX_VALUE = 50;
 
 class R130VSUAController
 {

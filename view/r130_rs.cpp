@@ -226,7 +226,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
     }
     /*else if (event->x() > 374 && event->y() > 227 && r130_nastr_is_allowed &&
                event->x() < 476 && event->y() < 324)*/
-    else if (event->x() > x1000minX && event->y() > x1000minY
+    else if (event->x() > x1000minX && event->y() > x1000minY && r130_nastr_is_allowed
              && event->x() < x1000maxX && event->y() < x1000maxY)
     {
         static QPixmap * r130_x1000_pixmap = new QPixmap(":/res/R130/X100.png");
@@ -270,7 +270,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
     }
     /*else if (event->x() > 678 && event->y() > 211 && r130_nastr_is_allowed &&
                event->x() < 788 && event->y() < 331)*/
-    else if (event->x() > x1minX && event->y() > x1minY
+    else if (event->x() > x1minX && event->y() > x1minY && r130_nastr_is_allowed
              && event->x() < x1maxX && event->y() < x1maxY)
     {
         static QPixmap * r130_x1_pixmap = new QPixmap(":/res/R130/X1.png");

@@ -1,7 +1,7 @@
 #ifndef R130_H
 #define R130_H
 
-#define R130_DEBUG true
+//#define R130_DEBUG false
 
 #include <QMainWindow>
 #include "controller/networkcontroller/abstractnetworkcontroller.h"
@@ -32,6 +32,7 @@ class R130 : public QMainWindow
     bool bp_pit;
     bool bp_vsua;
 
+    int angle_vrt = 0;
     bool r130_vsu_cable_1_launched;
     bool r130_vsu_cable_2_launched;
     bool r130_cable_pit;

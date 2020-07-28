@@ -37,4 +37,5 @@ void R130::mousePressEventBp(QMouseEvent * event){
             this->ui->pit_zem->setStyleSheet("");
         //this->controller.actionResolver(R123StateController::BP_ZIEM);
     }
+    this->changeIndicator(angle_vrt);
 }
