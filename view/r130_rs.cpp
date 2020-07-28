@@ -32,10 +32,10 @@ void R130::mousePressEventRs(QMouseEvent *event) {
            );
            // PITANIYE AND ZIEMLYA EVENT
     }
-#ifndef R130_DEBUG
+
     if (!r130_ziem)
         return;
-#endif
+
     if (event->x() > 62 && event->y() > 56 &&
                event->x() < 118 && event->y() < 181)
     {
@@ -103,7 +103,7 @@ void R130::mousePressEventRs(QMouseEvent *event) {
         );
 
         if (r130_regim == NASTR_CZAST && bp_pit && bp_vsua && r130_cable_pit && r130_vkl_switcher &&
-                old_regim != r130_regim && r130_rru_aru_switcher == ARU)
+                old_regim != r130_regim && r130_rru_aru_switcher == RRU)
         {
             this->r130_nastroyka_thread.start();
         }
@@ -187,7 +187,6 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             this->ui->r130_freq_x1000, r130_x1000_pixmap,
             r130_x1000_angle
         );
-        qDebug() << "X1000 Rotate";
         // R130 FREQUENCY X1000 ROTATING EVENT
     } else if (event->x() > 550 && event->y() > 212 && r130_nastr_is_allowed &&
                event->x() < 655 && event->y() < 322)
@@ -215,7 +214,6 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             this->ui->r130_freq_x100, r130_x100_pixmap,
             r130_x100_angle
         );
-        qDebug() << "X100 Rotate";
         // R130 FREQUENCY X100 ROTATING EVENT
     }
     /*else if (event->x() > 678 && event->y() > 211 && r130_nastr_is_allowed &&
@@ -243,7 +241,6 @@ void R130::mousePressEventRs(QMouseEvent *event) {
             this->ui->r130_freq_x1, r130_x1_pixmap,
             r130_x1_angle
         );
-        qDebug() << "X1 Rotate";
         // R130 FREQUENCY X1 ROTATING EVENT
     } else if (event->x() > 435 && event->y() > 495 &&
                event->x() < 495 && event->y() < 650) {
@@ -256,11 +253,9 @@ void R130::mousePressEventRs(QMouseEvent *event) {
 }
 
 void R130::wheelEventRs(QWheelEvent *event) {
-    qDebug() << "x: " << event->x() << " y: " << event->y();
-#ifndef R130_DEBUG
+
     if (!r130_ziem)
         return;
-#endif
 
     if (event->x() > 250 && event->y() > 293 &&
             event->x() < 289 && event->y() < 333)
@@ -324,8 +319,6 @@ void R130::wheelEventRs(QWheelEvent *event) {
             this->ui->r130_ton_tlg, r130_ton_tlg_pixmap,
             r130_ton_tlg
         );
-
-        // todo check how it's actually rotating
         // R130 TON TLG EVENT
     }
     /*else if (event->x() > 374 && event->y() > 227 && r130_nastr_is_allowed &&
@@ -341,11 +334,36 @@ void R130::r130_rotate_ampermetr(int angle) {
 
 void R130::update_r130_rst() {
 
-    if (r130_prm_prd_switcher == PRM && r130_regim == DEGURN && bp_pit && bp_vsua && r130_cable_pit && r130_vkl_switcher) {
+    if (r130_prm_prd_switcher == PRM && r130_regim == DEGURN && isRstPowerOn()) {
         this->ui->r130_dezh_priyom_opacity->setStyleSheet("background-image: url(:/res/R130/r130_diezh_priyom.png);");
         this->r130_rotate_ampermetr(45);
     } else {
         this->ui->r130_dezh_priyom_opacity->setStyleSheet("");
+        this->r130_rotate_ampermetr(0);
+    }
+
+    if (isPrd() && (r130_regim == KALIBR) && isRstPowerOn()
+            && (r130_rod_raboty == OM || r130_rod_raboty == AM) && r130_control == 3)
+    {
+        this->r130_rotate_ampermetr((r130_uroven_pered - 15) * 45. / 65.);
+        if (r130_uroven_pered >= 70 && r130_uroven_pered <= 95) {
+            // NASTR IS OK FOR CALL (ALSO NEED CHECK VSUA AND PROVODKI)
+        } else if (r130_uroven_pered > 95) {
+            // NASTR IS BAD
+        } else if (r130_uroven_pered < 70)  {
+            // NASTR IS BAD
+        }
+    } else if (isPrd() && (r130_regim == _20 || r130_regim == _100) && r130_control == 3
+               && (r130_rod_raboty == ATH || r130_rod_raboty == CZT || r130_rod_raboty == ATU)) {
+        this->r130_rotate_ampermetr((r130_uroven_pered - 15) * 45. / 65.);
+        if (r130_uroven_pered >= 70 && r130_uroven_pered <= 95) {
+            // NASTR IS OK FOR TLG (ALSO NEED CHECK VSUA AND PROVODKI)
+        } else if (r130_uroven_pered > 95) {
+            // NASTR IS BAD
+        } else if (r130_uroven_pered < 70)  {
+            // NASTR IS BAD
+        }
+    } else if (!(r130_prm_prd_switcher == PRM && r130_regim == DEGURN && isRstPowerOn()))  {
         this->r130_rotate_ampermetr(0);
     }
 }

@@ -44,6 +44,8 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_x1000_angle = 0;
 
     r130_done_setup_frequency = 0;
+    r130_is_currently_prd = true;
+    space_is_pressed = false;
 }
 
 R130::~R130()
@@ -124,7 +126,6 @@ void R130::block_until_nastroyka_done() {
     if (block_all) {
         this->r130_setup_is_done = true;
         this->r130_done_setup_frequency = count_frequency();
-        qDebug() << r130_done_setup_frequency;
         this->ui->r130_nastroyka_diod->setStyleSheet("background-image: url(:/res/R130/r130_nastroyka.png);");
     } else {
         this->ui->r130_nastroyka_diod->setStyleSheet("");
@@ -139,5 +140,33 @@ void R130NastroykaThread::run() {
     emit block_until_nastroyka_done();
 }
 
+void R130::keyPressEvent(QKeyEvent *ev) {
+    if (!ev->isAutoRepeat() && ev->key() == Qt::Key_Space)
+    {
+        this->space_is_pressed = true;
+        update_r130_rst();
+    }
+}
+
+void R130::keyReleaseEvent(QKeyEvent *ev) {
+    if (ev->key() == Qt::Key_Space && !ev->isAutoRepeat())
+    {
+        this->space_is_pressed = false;
+        update_r130_rst();
+    }
+}
+
+bool R130::isPrd() {
+    if (r130_rod_raboty == OM || r130_rod_raboty == AM)
+        return (space_is_pressed && r130_cable_mtg) || r130_prm_prd_switcher == PRD;
+
+    if ((r130_rod_raboty == CZT || r130_rod_raboty == ATU || r130_rod_raboty == ATH) && r130_cable_key)
+        return space_is_pressed && r130_prm_prd_switcher == PRD;
+
+    return false;
+}
 
 
+bool R130::isRstPowerOn() {
+   return  bp_pit && bp_vsua && r130_cable_pit && r130_vkl_switcher;
+}

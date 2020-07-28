@@ -40,7 +40,11 @@ class R130 : public QMainWindow
     void changeIndicator(int angle_vrt, int delta);
     void wheelEventRs(QWheelEvent * event);
 
+    void keyPressEvent(QKeyEvent * ev) override;
+    void keyReleaseEvent(QKeyEvent * ev) override;
+
     bool block_all;
+    bool space_is_pressed;
 
     bool bp_zem;
     bool bp_pit;
@@ -62,6 +66,8 @@ class R130 : public QMainWindow
     enum { PRM, PRD } r130_prm_prd_switcher;
     enum { RRU, ARU } r130_rru_aru_switcher;
     bool r130_setup_is_done;
+
+    bool r130_is_currently_prd;
 
     int r130_uroven_pered;
     int r130_volume;
@@ -90,6 +96,8 @@ class R130 : public QMainWindow
     void update_r130_rst();
     void r130_rotate_ampermetr(int angle);
     int count_frequency();
+    bool isPrd();
+    bool isRstPowerOn();
 public:
     R130VSUAController vsua_controller;
     explicit R130(QString IP, bool is_server, AbstractNetworkController * controller);
