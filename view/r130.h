@@ -71,6 +71,7 @@ class R130 : public QMainWindow
 
     void update_r130_rst();
     void r130_rotate_ampermetr(int angle);
+    int count_frequency();
 public:
     R130VSUAController vsua_controller;
     explicit R130(QString IP, bool is_server, AbstractNetworkController * controller);

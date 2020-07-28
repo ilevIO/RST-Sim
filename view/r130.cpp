@@ -100,5 +100,6 @@ void R130::mouseReleaseEvent(QMouseEvent *event)
         this->ui->vsua_clk_ind->setPixmap(pix);
     }
     update_r130_rst();
+    count_frequency();
 }
 

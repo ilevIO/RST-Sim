@@ -335,5 +335,14 @@ void R130::update_r130_rst() {
         this->r130_rotate_ampermetr(0);
     }
 
+}
 
+int R130::count_frequency() {
+    int frequency_x1000 = (r130_x1000_angle + 216) / 36;
+    int frequency_x100 = (r130_x100_angle + 216) / 36;
+    int frequency_x1 = (r130_x1_angle + 252) * 10 / 36;
+
+    int frequency = frequency_x1000 * 1000 + frequency_x100 * 100 + frequency_x1;
+
+    return frequency;
 }
