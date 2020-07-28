@@ -380,6 +380,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            position--;
            break;
        }
+       this->vsua_controller.grub_nastr_svyaz_freq = position - 1;
    }
    else if (event->x() > 571 && event->y() > 197 && vsua_controller.ground_connected
             && event->x() < 615 && event->y() < 237)
@@ -419,6 +420,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            rotate(-16);
            break;
        }
+       this->vsua_controller.indikatsia_nastr = position - 1;
    }
    else if (event->x() > 540 && event->y() > 392 && vsua_controller.ground_connected
             && event->x() < 588 && event->y() < 433)
@@ -478,6 +480,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            rotate(16);
            break;
        }
+       this->vsua_controller.grub_nastr_antenn_freq = position - 1;
    }
    else if (event->x() > 404 && event->y() > 333 && vsua_controller.ground_connected
             && event->x() < 459 && event->y() < 388)
@@ -537,7 +540,7 @@ void R130::mousePressEventVsua(QMouseEvent * event) {
            rotate(34);
            break;
        }
-       this->vsua_controller.grub_nastr_antenn_freq = napr;
+       this->vsua_controller.tip_antenni = position - 1;
    }
    else if (event->x() > 311 && event->y() > 234 && vsua_controller.ground_connected
             && event->x() < 349 && event->y() < 265)

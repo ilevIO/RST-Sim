@@ -5,6 +5,7 @@
 #include <math.h>
 #include <vector>
 #include <algorithm>
+#include <qdebug.h>
 
 const int R130_VSUA_INDICATOR_MAX_VALUE = 50;
 
@@ -147,6 +148,8 @@ public:
              i++) {
         }
         bool according_to_table = i < table_states.size();
+        qDebug() << "tip_antenni: " << tip_antenni;
+        qDebug() << "tipi_antenn_match: " << tipi_antenn_match;
         return nastr_indication_is_max && tipi_antenn_match && according_to_table;
     }
 
