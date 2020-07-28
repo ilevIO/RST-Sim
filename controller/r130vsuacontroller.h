@@ -149,7 +149,10 @@ public:
         }
         bool according_to_table = i < table_states.size();
         qDebug() << "tip_antenni: " << tip_antenni;
+        qDebug() << "indikatsia_nastroyki: " << indikatsia_nastr;
         qDebug() << "tipi_antenn_match: " << tipi_antenn_match;
+        qDebug() << "grub_nastr_antenn_freq: " << grub_nastr_antenn_freq;
+        qDebug() << "grub_nastr_svyaz_freq: " << grub_nastr_svyaz_freq;
 
         if (according_to_table) {
             qDebug() << "table_state: " << "frequencies: " << table_states[i].frequency_range.min << "-" << table_states[i].frequency_range.max;
