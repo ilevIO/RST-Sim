@@ -245,6 +245,13 @@ void R130::mousePressEventRs(QMouseEvent *event) {
         );
         qDebug() << "X1 Rotate";
         // R130 FREQUENCY X1 ROTATING EVENT
+    } else if (event->x() > 435 && event->y() > 495 &&
+               event->x() < 495 && event->y() < 650) {
+        r130_cable_key = !r130_cable_key;
+        this->ui->r130_cable_key->setStyleSheet(
+            r130_cable_key ? "background-image: url(:/res/R130/Кабель.Ключ.png);" : ""
+        );
+        //KLYUCH CABLE
     }
 }
 

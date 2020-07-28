@@ -50,6 +50,7 @@ class R130 : public QMainWindow
     bool r130_vsu_cable_1_launched;
     bool r130_vsu_cable_2_launched;
     bool r130_cable_pit;
+    bool r130_cable_key;
     bool r130_ziem;
     bool r130_cable_mtg;
     enum { PLAVNO, DISKRETNO } r130_smooth;

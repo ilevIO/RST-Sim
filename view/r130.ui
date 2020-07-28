@@ -464,6 +464,19 @@
          <string/>
         </property>
        </widget>
+       <widget class="QLabel" name="r130_cable_key">
+        <property name="geometry">
+         <rect>
+          <x>405</x>
+          <y>443</y>
+          <width>91</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
        <zorder>main</zorder>
        <zorder>r130_freq_x1000</zorder>
        <zorder>r130_freq_x100</zorder>
@@ -489,6 +502,7 @@
        <zorder>r130_vsua_error</zorder>
        <zorder>r130_dezh_priyom_opacity</zorder>
        <zorder>r130_nastroyka_diod</zorder>
+       <zorder>r130_cable_key</zorder>
       </widget>
       <widget class="QWidget" name="vsua">
        <attribute name="title">
@@ -916,9 +930,9 @@
   </widget>
  </widget>
  <resources>
-  <include location="r123.qrc"/>
-  <include location="r130.qrc"/>
   <include location="r173.qrc"/>
+  <include location="r130.qrc"/>
+  <include location="r123.qrc"/>
  </resources>
  <connections/>
 </ui>
