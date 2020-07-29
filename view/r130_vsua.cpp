@@ -14,16 +14,18 @@ void R130::changeIndicator(int angle_vrt, int delta) {
         qDebug() << "In: " << angle_vrt;
         qDebug() << "sin: " << sin(abs(angle_vrt/2)*3.1415/180);
 
-        angle_ustr = abs(sin(abs(angle_vrt/2)*3.1415/180) * 60); //(abs(angle_vrt/8.0) <= R130_VSUA_INDICATOR_MAX_VALUE ? abs(angle_vrt/8.0) : 2*R130_VSUA_INDICATOR_MAX_VALUE - abs(angle_vrt/8));
+        angle_ustr = abs(sin(abs(angle_vrt/2)*3.1415/180) * R130_VSUA_INDICATOR_MAX_VALUE); //(abs(angle_vrt/8.0) <= R130_VSUA_INDICATOR_MAX_VALUE ? abs(angle_vrt/8.0) : 2*R130_VSUA_INDICATOR_MAX_VALUE - abs(angle_vrt/8));
 
         qDebug() << "Out: " << angle_ustr;
 
         rm.rotate(angle_ustr);
+        this->vsua_controller.plav_nastr_antenn_freq = angle_ustr;
 
         pixmap = pixmap.transformed(rm);
         this->ui->vsua_ustr->setPixmap(QPixmap(pixmap.transformed(rm)));
     } else {
         int angle_vrt = 0;
+        this->vsua_controller.plav_nastr_antenn_freq = -1;
         static QPixmap * vsua_ustr = new QPixmap(":/res/r123/r123_ustr.png");
         QPixmap pixmap(*vsua_ustr);
         QMatrix rm;
