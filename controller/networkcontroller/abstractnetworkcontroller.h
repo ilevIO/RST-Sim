@@ -18,6 +18,8 @@ public:
     virtual void setVolume(char level) = 0;
     virtual void setSzumLevel(float level) = 0;
     virtual void setRecordVolume(char level) = 0;
+    virtual void setRestrictedReceiveCall(bool flag) = 0;
+    virtual void setRestrictedReceiveSound(bool flag) = 0;
 
 signals:
 

@@ -62,8 +62,13 @@ void NetworkController::run()
 
                 prepareToAudioOutput(recieveSound);
 
-                audioOut->write(recieveSound.audio_data, MESSAGE_SIZE);
 
+
+                if ((this->isRestrictedReceiveCall && recieveSound.call) || (this->isRestrictedReceiveSound && !recieveSound.call)) {
+                    audioOut->write(nothing.audio_data, MESSAGE_SIZE);
+                } else {
+                    audioOut->write(recieveSound.audio_data, MESSAGE_SIZE);
+                }
                 if (recieveSound.call)
                 {
                     if (call == false)

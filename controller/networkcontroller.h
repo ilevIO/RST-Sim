@@ -41,6 +41,8 @@ class NetworkController : public AbstractNetworkController
     void prepareToAudioOutput(Message& msg);
 
 public:
+    bool isRestrictedReceiveSound;
+    bool isRestrictedReceiveCall;
     NetworkController(bool server, QString ip = "127.0.0.1");
 
     void config_send(int frequency) override;
@@ -54,6 +56,12 @@ public:
     void setSzumLevel(float level) override;
     void setRecordVolume(char level) override;
 
+    void setRestrictedReceiveCall(bool flag) {
+        this->isRestrictedReceiveCall = flag;
+    }
+    void setRestrictedReceiveSound(bool flag) {
+        this->isRestrictedReceiveSound = flag;
+    }
     ~NetworkController();
 
 signals:
