@@ -74,6 +74,7 @@ const int ANTENNA_3 = DIPOL_2;
 class R130VSUAController
 {
 public:
+    ///R130 parent
     std::vector<R130VSUATableRow> table_states {
         //DIPOL
                 R130VSUATableRow(FrequencyRange(1.5, 3), {ANTENNA_1, ANTENNA_2}, {2}, {2,3,4,7}),
@@ -105,6 +106,7 @@ public:
     int connected_tip_antenni = -1;
     int indikatsia_nastr = 0;
 
+    float parentFrequency;
     //cables:
     bool ukv_connected = false;
     bool kv_connected = false;
@@ -112,14 +114,19 @@ public:
 
     bool is_vsua_ok_with_this_frequency(float frequency) {
         int i = 0;
+        this->parentFrequency = frequency;
         for (;
              (i < table_states.size())
              && (table_states[i].matches(/*frequency,*/tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq));
              i++) {
         }
+        qDebug() << "Frequency: " << frequency;
         if ((i < table_states.size()) && (table_states[i].frequency_range.contains(frequency))) {
+            qDebug() << "Frequency is ok";
+            qDebug() << "Range: " << table_states[i].frequency_range.min << "-" << table_states[i].frequency_range.max;
             return true;
         }
+        qDebug() << "Frequency is not ok";
         return false;
     }
 
@@ -160,6 +167,7 @@ public:
         } else {
             qDebug() << "table_state: not found";
         }
+        qDebug() << "Aligns with R130 frequency: " << this->is_vsua_ok_with_this_frequency(this->parentFrequency);
         return nastr_indication_is_max && tipi_antenn_match && according_to_table;
     }
 

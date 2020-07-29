@@ -150,11 +150,7 @@ void R130::wheelEventVsua(QWheelEvent * event) {
         changeIndicator(angle_vrt, delta);
 
     }
-    if (!this->vsua_controller.isSetupAsExample()) {
-        this->ui->r130_vsua_error->setStyleSheet("background-image: url(:/res/R130/vsua_error.png);");
-    } else {
-        this->ui->r130_vsua_error->setStyleSheet("");
-    }
+
 }
 
 void R130::mousePressEventVsua(QMouseEvent * event) {

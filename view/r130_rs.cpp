@@ -366,6 +366,14 @@ void R130::update_r130_rst() {
     } else if (!(r130_prm_prd_switcher == PRM && r130_regim == DEGURN && isRstPowerOn()))  {
         this->r130_rotate_ampermetr(0);
     }
+    if (!(this->vsua_controller.isSetupAsExample()
+            && this->vsua_controller.is_vsua_ok_with_this_frequency(this->r130_done_setup_frequency/1000.0)
+            && r130_setup_is_done)) {
+        this->ui->r130_vsua_error->setStyleSheet("background-image: url(:/res/R130/vsua_error.png);");
+    } else {
+        this->ui->r130_vsua_error->setStyleSheet("");
+        qDebug() << "VSUA and 130 are friends";
+    }
 }
 
 int R130::count_frequency() {

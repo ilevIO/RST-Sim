@@ -126,6 +126,7 @@ void R130::block_until_nastroyka_done() {
     if (block_all) {
         this->r130_setup_is_done = true;
         this->r130_done_setup_frequency = count_frequency();
+        this->vsua_controller.is_vsua_ok_with_this_frequency(r130_done_setup_frequency/1000.0);
         this->ui->r130_nastroyka_diod->setStyleSheet("background-image: url(:/res/R130/r130_nastroyka.png);");
     } else {
         this->ui->r130_nastroyka_diod->setStyleSheet("");

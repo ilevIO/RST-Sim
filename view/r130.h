@@ -8,6 +8,7 @@
 #include <QLabel>
 #include "controller/r130controller.h"
 #include "controller/r130vsuacontroller.h"
+
 namespace Ui {
 class r130;
 }
@@ -21,6 +22,7 @@ signals:
     void block_until_nastroyka_done();
 
 };
+
 
 class R130 : public QMainWindow
 {
