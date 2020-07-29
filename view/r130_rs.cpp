@@ -286,6 +286,8 @@ void R130::wheelEventRs(QWheelEvent *event) {
             this->ui->r130_volume, r130_volume_pixmap,
             r130_volume * 1.8
         );
+
+        networkController->setVolume(float(r130_volume) / 100);
         // R130 VOLUME EVENT
     } else if (event->x() > 497 && event->y() > 295 &&
                event->x() < 540 && event->y() < 335)
@@ -385,7 +387,7 @@ void R130::update_r130_rst() {
 
 
    if (isGoodSetup()) {
-
+       qDebug() << "isPrd() " << isPrd();
        networkController->setRestrictedReceiveCall(isGoodForSound);
        networkController->setRestrictedReceiveSound(isGoodForTLG);
        if (isPrd()) {
