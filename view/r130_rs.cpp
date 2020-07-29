@@ -287,7 +287,7 @@ void R130::wheelEventRs(QWheelEvent *event) {
             r130_volume * 1.8
         );
 
-        networkController->setVolume(float(r130_volume) / 100);
+        networkController->setVolume(r130_volume);
         // R130 VOLUME EVENT
     } else if (event->x() > 497 && event->y() > 295 &&
                event->x() < 540 && event->y() < 335)
@@ -385,12 +385,24 @@ void R130::update_r130_rst() {
         isGoodForSound = false;
     }
 
+    if (!r130_cable_mtg)
+        isGoodForSound = false;
 
+    if (!r130_cable_key)
+        isGoodForTLG = false;
+
+//    if (r130_regim != ATH && r130_regim != ATU && r130_regim != CZT)
+//        isGoodForTLG = false;
+
+//    if (r130_regim != OM && r130_regim != AM)
+//        isGoodForSound = false;
+
+   qDebug() << "is good setup " << isGoodSetup();
    if (isGoodSetup()) {
-       qDebug() << "isPrd() " << isPrd();
        networkController->setRestrictedReceiveCall(isGoodForSound);
        networkController->setRestrictedReceiveSound(isGoodForTLG);
        if (isPrd()) {
+           qDebug() << "lolLOLOLOL";
            networkController->config_send(this->r130_done_setup_frequency);
            if (isGoodForTLG)
                networkController->call_on();
