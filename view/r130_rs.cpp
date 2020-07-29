@@ -391,13 +391,13 @@ void R130::update_r130_rst() {
 //    if (!r130_cable_key)
 //        isGoodForTLG = false;
 
-//    if (r130_regim != ATH && r130_regim != ATU && r130_regim != CZT)
-//        isGoodForTLG = false;
+    if ((r130_rod_raboty == ATH) || (r130_rod_raboty == ATU )|| (r130_rod_raboty == CZT))
+        isGoodForSound = false;
 
-//    if (r130_regim != OM && r130_regim != AM)
-//        isGoodForSound = false;
+    if ((r130_rod_raboty == OM) || (r130_rod_raboty == AM))
+        isGoodForTLG = false;
 
-   qDebug() << "is good setup " << isGoodSetup();
+   qDebug() << "is good setup " << isGoodForTLG << isGoodForSound;
    if (isGoodSetup()) {
 //       networkController->setRestrictedReceiveCall(isGoodForSound);
 //       networkController->setRestrictedReceiveSound(isGoodForTLG);
