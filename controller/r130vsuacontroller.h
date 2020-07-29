@@ -112,21 +112,25 @@ public:
     bool kv_connected = false;
     bool ground_connected = false;
 
+    std::vector<R130VSUATableRow> valid_rows {};
+
     bool is_vsua_ok_with_this_frequency(float frequency) {
         int i = 0;
         this->parentFrequency = frequency;
         for (;
-             (i < table_states.size())
-             && (table_states[i].matches(/*frequency,*/tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq));
+             (i < valid_rows.size())
+             && !(valid_rows[i].frequency_range.contains(frequency));
              i++) {
         }
         qDebug() << "Frequency: " << frequency;
-        if ((i < table_states.size()) && (table_states[i].frequency_range.contains(frequency))) {
+        if ((i < valid_rows.size()) && (valid_rows[i].frequency_range.contains(frequency))) {
             qDebug() << "Frequency is ok";
-            qDebug() << "Range: " << table_states[i].frequency_range.min << "-" << table_states[i].frequency_range.max;
+            qDebug() << i;
+            qDebug() << "Range: " << valid_rows[i].frequency_range.min << "-" << valid_rows[i].frequency_range.max;
             return true;
         }
         qDebug() << "Frequency is not ok";
+        qDebug() << i;
         return false;
     }
 
@@ -149,12 +153,16 @@ public:
             }
         }
         int i = 0;
+        valid_rows.clear();
         for (;
              (i < table_states.size())
-             && !(table_states[i].matches(/*frequency,*/tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq));
+             /*&& !(table_states[i].matches(tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq))*/;
              i++) {
+            if (table_states[i].matches(tip_antenni, grub_nastr_antenn_freq, grub_nastr_svyaz_freq)) {
+                valid_rows.push_back(table_states[i]);
+            }
         }
-        bool according_to_table = i < table_states.size();
+        bool according_to_table = !valid_rows.empty();
         qDebug() << "tip_antenni: " << tip_antenni;
         qDebug() << "indikatsia_nastroyki: " << indikatsia_nastr;
         qDebug() << "tipi_antenn_match: " << tipi_antenn_match;
@@ -162,10 +170,12 @@ public:
         qDebug() << "grub_nastr_svyaz_freq: " << grub_nastr_svyaz_freq;
 
         if (according_to_table) {
-            qDebug() << "table_state: " << "frequencies: " << table_states[i].frequency_range.min << "-" << table_states[i].frequency_range.max;
-
+            qDebug() << "table_states: ";
+            for (int i = 0; i < valid_rows.size(); i++) {
+                qDebug() << i << ":    frequencies: " << valid_rows[i].frequency_range.min << "-" << valid_rows[i].frequency_range.max;
+            }
         } else {
-            qDebug() << "table_state: not found";
+            qDebug() << "table_states: not found";
         }
         qDebug() << "Aligns with R130 frequency: " << this->is_vsua_ok_with_this_frequency(this->parentFrequency);
         return nastr_indication_is_max && tipi_antenn_match && according_to_table;
