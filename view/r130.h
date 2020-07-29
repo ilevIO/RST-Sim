@@ -30,7 +30,14 @@ class R130 : public QMainWindow
 
     R130NastroykaThread r130_nastroyka_thread;
 
+    AbstractNetworkController * networkController;
+
     bool BP_active;
+
+    bool isGoodForTLG;
+    bool isGoodForSound;
+
+    bool isGoodSetup();
 
     void mousePressEvent(QMouseEvent * event) override;
     void mousePressEventVsua(QMouseEvent * event);
@@ -100,6 +107,8 @@ class R130 : public QMainWindow
     int count_frequency();
     bool isPrd();
     bool isRstPowerOn();
+
+
 public:
     R130VSUAController vsua_controller;
     explicit R130(QString IP, bool is_server, AbstractNetworkController * controller);

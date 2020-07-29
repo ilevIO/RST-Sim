@@ -345,27 +345,30 @@ void R130::update_r130_rst() {
     if (isPrd() && (r130_regim == KALIBR) && isRstPowerOn()
             && (r130_rod_raboty == OM || r130_rod_raboty == AM) && r130_control == 3)
     {
+        isGoodForTLG = false;
         this->r130_rotate_ampermetr((r130_uroven_pered - 15) * 45. / 65.);
         if (r130_uroven_pered >= 70 && r130_uroven_pered <= 95) {
-            // NASTR IS OK FOR CALL (ALSO NEED CHECK VSUA AND PROVODKI)
+            isGoodForSound = true;
         } else if (r130_uroven_pered > 95) {
-            // NASTR IS BAD
+            isGoodForSound = false;
         } else if (r130_uroven_pered < 70)  {
-            // NASTR IS BAD
+            isGoodForSound = false;
         }
     } else if (isPrd() && (r130_regim == _20 || r130_regim == _100) && r130_control == 3
                && (r130_rod_raboty == ATH || r130_rod_raboty == CZT || r130_rod_raboty == ATU)) {
         this->r130_rotate_ampermetr((r130_uroven_pered - 15) * 45. / 65.);
+        isGoodForSound = false;
         if (r130_uroven_pered >= 70 && r130_uroven_pered <= 95) {
-            // NASTR IS OK FOR TLG (ALSO NEED CHECK VSUA AND PROVODKI)
+            isGoodForTLG = true;
         } else if (r130_uroven_pered > 95) {
-            // NASTR IS BAD
+            isGoodForTLG = false;
         } else if (r130_uroven_pered < 70)  {
-            // NASTR IS BAD
+            isGoodForTLG = false;
         }
     } else if (!(r130_prm_prd_switcher == PRM && r130_regim == DEGURN && isRstPowerOn()))  {
         this->r130_rotate_ampermetr(0);
     }
+
     if (!(this->vsua_controller.isSetupAsExample()
             && this->vsua_controller.is_vsua_ok_with_this_frequency(this->r130_done_setup_frequency/1000.0)
             && r130_setup_is_done)) {
@@ -374,6 +377,30 @@ void R130::update_r130_rst() {
         this->ui->r130_vsua_error->setStyleSheet("");
         qDebug() << "VSUA and 130 are friends";
     }
+
+    if (r130_uroven_pered > 95 || r130_uroven_pered < 70) {
+        isGoodForTLG = false;
+        isGoodForSound = false;
+    }
+
+
+   if (isGoodSetup()) {
+
+       networkController->setRestrictedReceiveCall(isGoodForSound);
+       networkController->setRestrictedReceiveSound(isGoodForTLG);
+       if (isPrd()) {
+           networkController->config_send(this->r130_done_setup_frequency);
+           if (isGoodForTLG)
+               networkController->call_on();
+           else
+               networkController->call_off();
+       } else {
+           networkController->call_off();
+           networkController->config_listen(this->r130_done_setup_frequency);
+       }
+   } else {
+       networkController->config_kill();
+   }
 }
 
 int R130::count_frequency() {
@@ -384,4 +411,20 @@ int R130::count_frequency() {
     int frequency = frequency_x1000 * 1000 + frequency_x100 * 100 + frequency_x1;
 
     return frequency;
+}
+
+bool R130::isGoodSetup() {
+    if (!r130_setup_is_done)
+        return false;
+
+    if (!vsua_controller.is_vsua_ok_with_this_frequency(float(r130_done_setup_frequency) / 1000))
+        return false;
+
+    if (isRstPowerOn() && isGoodForTLG && (r130_regim == _20 || r130_regim == _100))
+        return true;
+
+    if (isRstPowerOn() && isGoodForSound && (r130_regim == _20 || r130_regim == _100))
+        return true;
+
+    return false;
 }

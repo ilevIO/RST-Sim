@@ -9,6 +9,8 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
 {
     setFocusPolicy(Qt::FocusPolicy::StrongFocus);
 
+    networkController = controller;
+
     QObject::connect(&r130_nastroyka_thread, SIGNAL(block_until_nastroyka_done()), this, SLOT(block_until_nastroyka_done()), Qt::QueuedConnection);
 
     this->setFixedSize(916, 691);
@@ -46,6 +48,8 @@ R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     r130_done_setup_frequency = 0;
     r130_is_currently_prd = true;
     space_is_pressed = false;
+    isGoodForTLG = false;
+    isGoodForSound = false;
 }
 
 R130::~R130()
