@@ -5,7 +5,7 @@
 #include <math.h>
 #include <vector>
 #include <algorithm>
-#include <qdebug.h>
+#include <QDebug>
 
 const int R130_VSUA_INDICATOR_MAX_VALUE = 50;
 

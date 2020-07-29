@@ -21,8 +21,8 @@ void R130::changeIndicator(int angle_vrt, int delta) {
         rm.rotate(angle_ustr);
         this->vsua_controller.plav_nastr_antenn_freq = angle_ustr;
 
-        qDebug() << "Szum: " << this->vsua_controller.plav_nastr_antenn_freq;
-        this->networkController->setSzumLevel(2*(this->vsua_controller.plav_nastr_antenn_freq*1.0)/(R130_VSUA_INDICATOR_MAX_VALUE*1.0));
+        qDebug() << "Szum: " << 2. - 2.*(this->vsua_controller.plav_nastr_antenn_freq*1.0)/(R130_VSUA_INDICATOR_MAX_VALUE*1.0);
+        this->networkController->setSzumLevel(2. - 2.*(this->vsua_controller.plav_nastr_antenn_freq*1.0)/(R130_VSUA_INDICATOR_MAX_VALUE*1.0));
 
         pixmap = pixmap.transformed(rm);
         this->ui->vsua_ustr->setPixmap(QPixmap(pixmap.transformed(rm)));

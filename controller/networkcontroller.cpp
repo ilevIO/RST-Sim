@@ -71,6 +71,7 @@ void NetworkController::run()
                 }
                 if (recieveSound.call)
                 {
+                    qDebug() << "receive call!!!!!!";
                     if (call == false)
                     {
                         switched = true;
@@ -125,14 +126,15 @@ void NetworkController::prepareToAudioOutput(Message &msg)
 {
     Message szum = getSzum();
 
-/*
-    destiny = reinterpret_cast<__m128i*>(msg.audio_data);
-    source = reinterpret_cast<__m128i*>(szum.audio_data);
+
+    /*auto destiny = reinterpret_cast<__m128i*>(msg.audio_data);
+    auto source = reinterpret_cast<__m128i*>(szum.audio_data);
     for (int i = 0; i < MESSAGE_SIZE / 16; i++)
     {
+        source[i] *= szum_level;
         destiny[i] += source[i];
-    }
-*/
+    }*/
+
 
     for (int i = 0; i < MESSAGE_SIZE; i++)
     {

@@ -87,7 +87,7 @@ void Server::SendRecieveThread::run()
 
                         for (int i = 0; i < MESSAGE_SIZE / 16; i++)
                         {
-                            //destiny[i] += source[i];
+                            destiny[i] += source[i];
                         }
 
                         if (message.call)

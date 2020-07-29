@@ -399,8 +399,8 @@ void R130::update_r130_rst() {
 
    qDebug() << "is good setup " << isGoodForTLG << isGoodForSound;
    if (isGoodSetup()) {
-//       networkController->setRestrictedReceiveCall(isGoodForSound);
-//       networkController->setRestrictedReceiveSound(isGoodForTLG);
+       networkController->setRestrictedReceiveCall(isGoodForSound);
+       networkController->setRestrictedReceiveSound(isGoodForTLG);
        qDebug() << "is prd" << isPrd();
        if (isPrd()) {
            qDebug() << "prd";

@@ -154,6 +154,7 @@ R123::R123(QString IP, bool is_server, AbstractNetworkController * controller) :
     ui(new Ui::r123),
     controller(this, IP, is_server, controller)
 {
+
     ui->setupUi(this);
     this->currentWheelState = 16;
     this->vsua_nast_is_pressed = false;

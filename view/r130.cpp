@@ -5,11 +5,11 @@
 
 R130::R130(QString IP, bool is_server, AbstractNetworkController * controller) :
     QMainWindow(nullptr),
-    ui(new Ui::r130)
+    ui(new Ui::r130), networkController(new R130controller(controller))
 {
     setFocusPolicy(Qt::FocusPolicy::StrongFocus);
 
-    networkController = controller;
+    networkController->setVolume(0);
 
     QObject::connect(&r130_nastroyka_thread, SIGNAL(block_until_nastroyka_done()), this, SLOT(block_until_nastroyka_done()), Qt::QueuedConnection);
 

@@ -4,7 +4,7 @@
 //#define R130_DEBUG false
 
 #include <QMainWindow>
-#include "controller/networkcontroller/abstractnetworkcontroller.h"
+//#include "controller/networkcontroller/abstractnetworkcontroller.h"
 #include <QLabel>
 #include "controller/r130controller.h"
 #include "controller/r130vsuacontroller.h"
@@ -30,7 +30,7 @@ class R130 : public QMainWindow
 
     R130NastroykaThread r130_nastroyka_thread;
 
-    AbstractNetworkController * networkController;
+    R130controller * networkController;
 
     bool BP_active;
 
