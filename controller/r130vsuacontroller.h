@@ -98,13 +98,13 @@ public:
     int freq_ukv = 20;
     int nastr_indication = 0;
     bool indication_tumbler = 0;
-    int grub_nastr_antenn_freq = 0;
-    int grub_nastr_svyaz_freq = 0;
+    int grub_nastr_antenn_freq = 3;
+    int grub_nastr_svyaz_freq = 7;
     int plav_nastr_antenn_freq = 0;
 
-    int tip_antenni = 0;
+    int tip_antenni = 1;
     int connected_tip_antenni = -1;
-    int indikatsia_nastr = 0;
+    int indikatsia_nastr = 2;
 
     float parentFrequency;
     //cables:
